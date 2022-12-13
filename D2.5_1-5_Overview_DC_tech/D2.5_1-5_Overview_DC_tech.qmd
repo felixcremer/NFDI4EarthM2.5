@@ -1,45 +1,58 @@
-# Overview of data cube technologies and review of other emerging technologies
+---
+title: "Overview of data cube technologies and review of other emerging technologies"
+subtitle: "NFDI4Earth Deliverable D... "
+date: 2022-12-15
+author: "Felix Cremer, Yonma Eid, Fabian Gans, Sibylle Hassler, Arne Osterthun, Edzer Pebesma" 
+format:
+  pdf:
+    pdf-engine: pdflatex
+  html: default
+toc: true
+number-sections: true
+documentclass: article
+---
 
-This document wants to provide the state of the art solutions for local and cloud based data storage and analysis for large gridded data.
+# Introduction
+
+The purpose if this document is to provide the state of the art solutions for local and cloud based data storage and analysis for large gridded data.
 In this document we are going to describe software that is currently used by scientists for the analysis of geospatial raster data. 
 This is going to be a living document that is updated at least on an annual basis and other emerging technologies are going to be added in the future.
 When looking at the diversity of available tools, data formats and services, an end user might quickly be overwhelmed and confused. 
-This document shall not just give a raw description of available tools but should rather help categorizing tools and show how they relate to each other and we will 
-try to use a variety of "angles" to look at the tools. 
+This document shall not just give a raw description of available tools but should rather help categorizing tools and show how they relate to each other and 
+we will try to use a variety of "angles" to look at the tools:
 
-Geospatial raster data is used in very different user scenarios which can be used as points of view of the comparison of the different raster analysis tools. 
+Geospatial raster data is used in very different user scenarios which can be interpreted as points of view of the comparison of the different raster analysis tools. 
 The size of the data and available computing resources play a big role in the choice of the correct tool.
 The computing resources can go from a single laptop, to a local cluster where the processing needs to be multi threaded or distributed
  up to cloud computing environments which are composed of multiple clusters.
-On their own laptop, scientists are able to control their computing environment but they would have to install software themselves. 
+On their own laptop, scientists have full control over their computing environment but they would have to install software themselves. 
 The software for laptops is mainly doing computations single threaded and there is a higher level of interactivity. 
-In High Performance Computing (HPC) environments the software runs mainly multi-threaded or multi-core and the software is installed by a local system administrator. 
+In High Performance Computing (HPC) environments the software runs mainly multi-threaded or multi-core and the software is usually installed by a local system administrator. 
 The computation environment is suited for larger processing and is not as interactive as on a local computer, because computation resources need to be mitigated by a job scheduler. 
-In a cloud computing environment like the Google Earth Engine (GEE) or the European Open Science Cloud (EOSC) users are bound to what the cloud provider allows on the platform and this can be quite closed like the GEE where only a special version of Python or Javascript is usable or open as on the EOSC where the user can use containers to run any software on the provided computing resources. 
+In a cloud computing environment like the Google Earth Engine (GEE) or the European Open Science Cloud (EOSC) users are bound to what the cloud provider allows on the platform and this can be quite closed like the GEE where only a subset of Python or Javascript can be used or open as on the EOSC where the user can use containers to run any software on the provided computing resources. 
 
-The tools that are described here can be used for different tasks. 
-It can go from extraction of a data for a given spatial and temporal extent to the visualisation of the data, to the processing of the data in batches which also includes machine learning training. These different tasks have all different software needs.
+The tools that are described in this document can be used for different tasks. 
+These tasks range from extraction of a subset of data for a given spatial and temporal extent to the visualisation of the data, to the processing of the data in batches which also includes machine learning training. These different tasks have all different software needs.
 
 Another angle to look at is the size of the dataset. 
 The size of the data set can be described spatially, going from a local dataset like a single satellite acquisition to a regional dataset to a global harmonised dataset. 
 The size can also be in terms of the occupied data storage from a few megabytes to multiple petabytes.
 
-
 A classification of the type of the tool and the cloud readiness, describing, how well one can work on larger scale computations with this tool is shown in Figure 1. 
-Cloud readiness has different meanings for the different categories. 
-For data formats a higher cloud readiness indicates, that data can be accessed partially, so that a dataset which is provided in some storage system in the cloud does not need to be downloaded in full to access only a small subset of the data.
-For software the cloud readiness entails, that the software can semi automatically use the different computing resources, 
+We acknowledge that "Cloud readiness" is not a well-defined term and Cloud readiness can have different meanings for tools belonging to different categories. 
+For data formats a higher cloud readiness indicates, that cloud datasets data can be accessed partially, i.e. a dataset which is provided in an object store in the cloud does not need to be downloaded in full to access only a small subset of the data.
+For software the cloud readiness entails, that the software can semi automatically use the different computing resources in a scalable way, 
 which are provided in the cloud as a multi-computer cluster. 
 
-![Classification of the tools into cloud readiness](overview.svg)
+![*Overview of tools, their type and cloud-readiness* Be aware that there are some grey zones in this classification and many of the formats/tools at the lower end might be used in a cloud-context as well. However, we want to show the distinction between mature tools that started before the advent of cloud computing and newer tools that were designed specifically with cloud computing in mind.](overview.png)
 
 
-## Data formats and databases
+# Data formats and databases
 
 In this section we discuss data formats and data bases that are often used for the storage of large gridded geospatial data. There is in some cases an overlap between the data formats and the accompanying software which is also doing data analysis, i.e Rasdaman and TileDB.
 
 
-### CF Conventions
+## CF Conventions
 
 The CF  (Climate and Forecast) Metadata conventions are a set of rules to describe which metadata are necessary to describe a data set. 
 The CF conventions have been developed on top of the NetCDF format. 
@@ -47,7 +60,7 @@ The aim of the CF conventions is to set the metadata to provide a definitive des
 The CF conventions include self-describing data, so that no external table for the data description is needed.
 CF conventions constrain the [Common Data Language (CDL)](https://www.unidata.ucar.edu/software/netcdf/workshops/most-recent/nc3model/Cdl.html), and CF conventions and CDL are also the basis for [Zarr files](#zarr).
 
-### Cloud Optimized Geotiffs
+## Cloud Optimized Geotiffs
 Cloud optimized geotiffs (COG) are geotiff files which are organized, so that they can be hosted on a HTTP file server. 
 This allows more efficient workflows on the cloud. 
 COGs in contrast to plain geotiffs can be opened only partially and so it is not needed to download the whole file but you can access only the parts of the file, that are actually needed. 
@@ -58,24 +71,24 @@ Example:
 
 * [Sentinel-2 L2A COGS on AWS](https://registry.opendata.aws/sentinel-2-l2a-cogs/)
 
-### HDF5
+## HDF5
 
 HDF5 (Hierarchical Data Format) is a widely used data format for storing n-dimensional array in all kinds of scientific and non-scientific applications. It supports storing multiple
 arrays in a single file, named dimensions, several compression codecs and array chunking. HDF5 and variants like NetCDF are widely used in HPC applications because
 of their support for mpi-based distributed read and write operations. 
 
-### NetCDF
+## NetCDF
 
 NetCDF stands for Network Common Data Form and is one of the standard data formats in the geosciences. It is a binary format. The development for NetCDF started in 1988 by UCAR. A NetCDF file is self describing, which means, that it includes a header that describes the data that is included in the netcdf file. 
 The most common used NetCDF version is NetCDF-4 which is based on the [HDF 5](#hdf5) format. 
 It allows for efficient subsetting but it can not be accessed multi threaded, but supports multi-process read/write operations through mpi.
 
 
-### TileDB 
+## TileDB 
 
 TileDB is an open source universal storage engine for dense and sparse multidimensional arrays. In May 2017 TileDB spun out of Intel Labs and the MIT. TileDB allows parallel I/O and supports both local as well as remote storage systems (i.e. object stores, HDFS and Lustre). Data is stored in tiles/chunks. TileDB provides filters like compression and byte shuffling that can be applied on the chunk/tile level. Instead of writing the data in place, TileDB creates a new fragment with each write operation. While this idea of fragments improves latency for write operations this introduces overhead for read operations.
 
-### Zarr
+## Zarr
 
 Zarr is a data format for handling of large N-dimensional typed arrays. It focuses on support for distributed storage systems (i.e. object stores). 
 It aims to provide efficient I/O for parallel computing.
@@ -88,31 +101,31 @@ Examples:
 * static [STAC](#spatio-temporal-asset-catalog-stac) to [CMIP6 on GCS](https://github.com/pangeo-data/pangeo-datastore-stac/blob/master/master/climate/cmip6_gcs/collection.json)
 * [reading Zarr files with R](https://r-spatial.org/r/2022/09/13/zarr.html) blog post
 
-## Analysis software
+# Analysis software
 
 In this section we describe software which is used to analyse the data. 
 These software solutions are mostly installed on a local computer by single persons. 
 There is an overlap in different tools, which provide the same syntax to allow the analysis on a local computer as in a cloud computing environment, i.e. OpenEO, OpenDataCube.
 
-### EarthDataLab.jl
+## EarthDataLab.jl
 
 Open source Julia library for with an interface for large-scale computations on Earth Data Cubes. Provides access to a variety of file formats like Zarr, NetCDF, GeoTiff and more. 
 Enables large distributed computations by appyling arbitrary user-defined functions to huge datasets in an efficient way by respecting the underlying chunking structure of the input datasets. 
 Automatically supports multi-threaded and distributed computations or a mix of both, depending on the cluster architecture. 
 It tries to mimic the data model of the xarray python library, so that dimension names form the basis of merging broadcast operations
 
-### Rasters.jl
+## Rasters.jl
 
 Rasters.jl is a Julia package to work with rasterized spatial data. It can open data from GeoTiff, NetCDF and R grd files. It provides a standardised interface so that many source data types can be used wtih identical syntax. This way, the user does not have to deal with the specifics of spatial file types. 
 It can be used for visualisation of the data and for the analysis of the data along one given dimension.
 
 
-### Rasdaman
+## Rasdaman
 
 Rasdaman is an Array / Datacube Database System, which pioneered array databases. Rasdaman offers an SQL-like query language called rasql for data definition, retrieval and manipulation. Rasql embeds into standard SQL, sets and implements the ISO 9075 SQL Part 15 for Multi-Dimensional Arrays. It is set up as a client server system.  
 Datasets have to be imported to the server with rasql. There are different client implementations from Rasdaman: a command-line utility, a Python and web client. All of them offer access to the server through rasql. Other third-party clients for different languages and use cases are available as well. Rasdaman has a commercial version, as well as an open source version with [limited capability](https://www.rasdaman.com/commercial-free.php).
 
-### OpenEO
+## OpenEO
 
 [OpenEO](https://openeo.org) is an application programming interface (API) developed by its namesake Horizon2020 project, providing a language neutral connection between clients and back-ends. 
 The three official client libraries currently available are in R, Python, and JavaScript (for web developers, and used by the [graphical web editor](https://editor.openeo.org/)).
@@ -123,13 +136,13 @@ It is also available as a downloadable [QGIS-plugin](https://openeo.org/document
 
 OpenEO was started as an open science alternative to closed source platforms, is led by a project steering committee, and has support from several larger European institutes who use it in production.
 
-### xarray (Python package)
+## xarray (Python package)
 
 Xarray is a Python package that provides an array type with labels and dimension names on top of a NumPy array. Dimensions, coordinates and attributes gives a more intuitive, more concise and less error-prone developer experience.  Xarray allows to apply operations along dimension names, select values of the array based on the label and not only on the integer positions. The mathematical operations are broadcasted across multiple dimensions not based on the array shape, but based on the array labels. 
 You can keep track of metadata as a python dictionary. 
 You do not need to keep track of the order of the arrays and you do not need to align dimensions with added dimensions of length one.
 
-### xcube (Python package)
+## xcube (Python package)
 
 xcube is a Python toolkit which provides Earth Observation data in an analysis-ready form. xcube converts EO data sources into self-contained data cubes which can then be published on the cloud. 
 The main data model in the xcube package is an xcube dataset.
@@ -141,7 +154,7 @@ The chunking of the dataset has a substantial impact on the processing performan
 xcube uses the zarr data format for the on disk representation of the data.
 
 
-### Iris (Python package)
+## Iris (Python package)
 
 Iris is a python package for the analysis and visualisation of Earth science data. Its data model is based on the [[CF Conventions]]. The visualisation is based on matplotlib and cartopy. 
 The data formats that can be used with Iris are:
@@ -150,33 +163,33 @@ It also has a plugin system available to include other formats.
 The Iris package builds upon numpy and dask.  
 It interoperates with the wider python ecosystem by using the standard numpy dask array types as underlying data storage. 
 
-### Open Data Cube
+## Open Data Cube
 
 The Open Data Cube (ODC) is a Python based geospatial data management and analysis software.
 ODC can be used to catalogue large amounts of data and to provide them as a Python API for analysis. 
 It is mainly used for the analysis of Earth observation data in the framework of regional or national data cube platforms.
 
-### stars (R package)
+## stars (R package)
 
 R package [`stars`](https://r-spatial.github.io/stars/) is a package for handling and analysing raster and vector data cubes, with arbitrary amount of dimensions. It uses the GDAL C++ Multidimensional Array interface (through R package [`sf`](ttps://r-spatial.github.io/sf/)) to read and write raster or vector data cubes, or sections of them (slices, limiting dimension ranges, or strided reads: reading dimensions at lower resolution)
 
-### terra (R package)
+## terra (R package)
 
 [`terra`](https://rspatial.org/spatial/index.html) is an R package for raster and vector data. It has its own classes for raster layers, raster stacks, and vector geometries with attributes. It is built for efficiency, scales to large rasters, and has a wide range of raster and vector algorithms available. It interfaces with R packages `sf` and `stars` (conversion of objects, both ways). It does not handle raster datacubes with more than three dimensions, or vector data cubes.
 
-### gdalcubes (R package)
+## gdalcubes (R package)
 
 R package [`gdalcubes`](https://cran.r-project.org/web/packages/gdalcubes/index.html) is an R package that creates a (regular) datacube from an image collection, by specifying the cube dimensions (extent, resolution, coordinate reference system) and spatial and/or temporal aggregation method(s). It can use arbitrary R function for this aggregation, and write the datacube as a NetCDF file or return it as a [`stars`](#stars-r-package) object. For finding individual images contributing to an image collection it can use a [STAC](#spatio-temporal-asset-catalog-stac) (through [`rstac`](#rstac-r-package), see below), as illustrated in [this blog post](https://r-spatial.org/r/2021/04/23/cloud-based-cubes.html).
 
-### rstac (R package)
+## rstac (R package)
 
 R package [`rstac`](https://cran.r-project.org/web/packages/rstac/index.html) provides a programmatic (R) interface to a STAC API catalog. It was developed as part of the [Brazil Data Cube](http://brazildatacube.org/en/home-page-2/) project.
 
-## Cloud solutions
+# Cloud solutions
 
 In this section we describe Cloud computing environments and tools for cloud computing environments which are used to scale the analysis which might be prepared and tested on a smaller setup on a local computer to a larger computational platform to enable the analysis of very large data sets which can not be downloaded locally. 
 
-### Google Earth Engine
+## Google Earth Engine
 
 Google Earth Engine is a cloud platform for the analysis of large geospatial datasets. 
 It provides easy access to the Landsat data, the Sentinel data and other different datasets. 
@@ -184,7 +197,7 @@ It is currently free, because Google sees it more as a marketing tool. The algor
 I see a large problem with vendor lock in, because as soon as Google decides that the computation is not free anymore, you can't easily switch to other systems. 
 The Google Earth Engine is used for example to provide the global forest cover change map.
 
-### DIAS
+## DIAS
 
 The DIAS are the Data and Information Access Services in the european Copernicus programme. 
 They provide centralized access to Copernicus data, information and processing tools. 
@@ -193,7 +206,7 @@ All DIAS platforms provide access to the Sentinel and other Copernicus datasets 
 The aim of the DIAS platforms is to allow the users to build data processing on the web without having to download the data to a local computer first. 
 
 
-### EOSC
+## EOSC
 
 The EOSC aims to develop a Web of FAIR Data and services for Europe,
 while covering the scientific cloud infrastructure available.
@@ -205,7 +218,7 @@ can reuse all the authentication systems of European universities,
 as well as openID systems like GitHub or Google.
 
 
-### Open Data Cube Instances
+## Open Data Cube Instances
 
 Open Data Cube is deployed for several larger (national/continental)
 Earth observation data cubes, notably the [Australian Geoscience
@@ -218,20 +231,20 @@ It is also used as back-end infrastructure for openEO instances,
 for instances operated by EURAC Research (internal) and EODC (public,
 part of the [openEO Platform](#openeo-platform) federated cube)
 
-### openEO Platform
+## openEO Platform
 
 To provide broad accessibility to the openEO API for users, OpenEO Platform, found at [openEO.cloud](https://openeo.cloud) provides compute access on large scale Earth observation data collections, including Copernicus and Landsat data. 
 Users can create a 30-day trial account to explore or process available data collections using code-scripts or in a user-friendly graphical process workflow with pre-defined, as well as user-defined, functions. User-defined functions can be written in Python or R, and are executed on the pixels at the back-end. The openEO.cloud aggregator passes requests on to one of four back-ends: VITO, EODC, Sentinel-Hub, and CreoDIAS, depending on which collections and processes are requested. Cloud resources are sponsored by the ESA NoR (network of resources).
 
-### Pangeo
+## Pangeo
 
 Pangeo is a community of like minded people which collaboratively develop software and infrastructure for Big Data geoscience research. 
 The Pangeo community also promotes a software stack of interconnected python packages including [xarray](#xarray-python-package) and [Iris](#iris-python-package). 
 They also deploy this software stack as a Pangeo environment in different cloud computing facalities.  
 
-## Miscellaneous Technologies
+# Miscellaneous Technologies
 
-### Spatio Temporal Asset Catalog (STAC)
+## Spatio Temporal Asset Catalog (STAC)
 
 [STAC](https://stacspec.org/en) stands for _Spatiotemporal Asset
 Catalog_ and is an (emerging) standard for describing metadata
@@ -259,8 +272,14 @@ Example STAC:
 * [stacindex](https://stacindex.org) a collection of STAC catalogs
 
 
-### Interplanetary File System
+## Interplanetary File System
 
 The interplanetary file system <https://ipfs.io/> is a further development of the torrent system.
 It would allow to have one version of a file in a larger network and if a file is requested for  download it can be retrieved from the nearest available position. 
 IPFS uses content addressable storage to distribute the file across the network and this makes it more fault tolerant and independent of single infrastructure components. 
+
+
+# Summary
+
+As this is the first revision of this living document, the authors do admit that the list of tools presented here is far from complete. 
+The list will be extended in the future and more data formats, tools and processing services will be added. NFDI4Earth is an open community. In case you want to suggest additional tools to be added in the future, feel free to reach out to the NFDI4Earth Measure 2.5 team or start a discussion directly on [Github](https://github.com/felixcremer/NFDI4EarthM2.5/issues). 
