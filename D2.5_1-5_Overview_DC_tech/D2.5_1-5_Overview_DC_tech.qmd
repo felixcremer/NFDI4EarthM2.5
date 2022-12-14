@@ -14,7 +14,7 @@ documentclass: article
 
 # Introduction
 
-The purpose if this document is to provide the state of the art solutions for local and cloud based data storage and analysis for large gridded data.
+The purpose of this document is to provide the state of the art solutions for local and cloud based data storage and analysis for large gridded data.
 In this document we are going to describe software that is currently used by scientists for the analysis of geospatial raster data. 
 This is going to be a living document that is updated at least on an annual basis and other emerging technologies are going to be added in the future.
 When looking at the diversity of available tools, data formats and services, an end user might quickly be overwhelmed and confused. 
