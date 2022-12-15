@@ -2,7 +2,20 @@
 title: "Overview of data cube technologies and review of other emerging technologies"
 subtitle: "NFDI4Earth Deliverable D2.5.1 "
 date: 2022-12-15
-author: "Felix Cremer, Yonma Eid, Fabian Gans, Sibylle Hassler, Arne Osterthun, Hannes Dröse, Edzer Pebesma" 
+author: 
+  - name: Felix Cremer
+    affiliations:
+    - ref: mpibgc
+  - Hannes Dröse
+  - Yomna Eid
+  - Fabian Gans
+  - Sibylle Hassler 
+  - Arne Osterthun
+  - Edzer Pebesma 
+affiliations:
+- id: mpibgc
+  name: Max-Planck Institute for Biogeochemistry
+  city: Jena
 format:
   pdf:
     pdf-engine: pdflatex
