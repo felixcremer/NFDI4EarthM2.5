@@ -44,7 +44,7 @@ For data formats a higher cloud readiness indicates, that cloud datasets data ca
 For software the cloud readiness entails, that the software can semi automatically use the different computing resources in a scalable way, 
 which are provided in the cloud as a multi-computer cluster. 
 
-![*Overview of tools, their type and cloud-readiness* Be aware that there are some grey zones in this classification and many of the formats/tools at the lower end might be used in a cloud-context as well. However, we want to show the distinction between mature tools that started before the advent of cloud computing and newer tools that were designed specifically with cloud computing in mind.](overview.png)
+![*Overview of tools, their type and cloud-readiness* Be aware that there are some grey zones in this classification and many of the formats/tools at the lower end might be used in a cloud-context as well. However, we want to show the distinction between still widely used legacy tools that started before the advent of cloud computing and newer tools that were designed specifically with cloud computing in mind.](overview.png)
 
 
 # Data formats and databases
@@ -282,4 +282,4 @@ IPFS uses content addressable storage to distribute the file across the network 
 # Summary
 
 As this is the first revision of this living document, the authors do admit that the list of tools presented here is far from complete. 
-The list will be extended in the future and more data formats, tools and processing services will be added. NFDI4Earth is an open community. In case you want to suggest additional tools to be added in the future, feel free to reach out to the NFDI4Earth Measure 2.5 team or start a discussion directly on [Github](https://github.com/felixcremer/NFDI4EarthM2.5/issues). 
+The list will be extended in the future and more data formats, tools and processing services will be added. NFDI4Earth is an open community. In case you want to suggest additional tools to be added in the future, feel free to reach out to the NFDI4Earth Measure 2.5 team (fcremer@bgc-jena.mpg.de as representative) or start a discussion directly on [Github](https://github.com/felixcremer/NFDI4EarthM2.5/issues). 
