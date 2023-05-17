@@ -88,11 +88,11 @@ Example:
 
 HDF5 (Hierarchical Data Format) is a widely used data format for storing n-dimensional array in all kinds of scientific and non-scientific applications. It supports storing multiple
 arrays in a single file, named dimensions, several compression codecs and array chunking. HDF5 and variants like NetCDF are widely used in HPC applications because
-of their support for mpi-based distributed read and write operations. 
+of their support for MPI (Message Passing Interface) based distributed read and write operations. 
 
 ## NetCDF
 
-NetCDF stands for Network Common Data Form and is one of the standard data formats in the geosciences. It is a binary format. The development for NetCDF started in 1988 by UCAR. A NetCDF file is self describing, which means, that it includes a header that describes the data that is included in the netcdf file. 
+NetCDF stands for Network Common Data Form and is one of the standard data formats in the geosciences. It is a binary format. The development for NetCDF started in 1988 by the University Corporation for Atmospheric Research (UCAR). A NetCDF file is self describing, which means, that it includes a header that describes the data that is included in the netcdf file. 
 The most common used NetCDF version is NetCDF-4 which is based on the [HDF 5](#hdf5) format. 
 It allows for efficient subsetting but it can not be accessed multi threaded, but supports multi-process read/write operations through mpi.
 
@@ -129,7 +129,7 @@ It tries to mimic the data model of the xarray python library, so that dimension
 
 ## Rasters.jl
 
-Rasters.jl is a Julia package to work with rasterized spatial data. It can open data from GeoTiff, NetCDF and R grd files. It provides a standardised interface so that many source data types can be used wtih identical syntax. This way, the user does not have to deal with the specifics of spatial file types. 
+Rasters.jl is a Julia package to work with rasterized spatial data. It can open data from GeoTiff, NetCDF and R grd files. It provides a standardised interface so that many source data types can be used with identical syntax. This way, the user does not have to deal with the specifics of spatial file types. 
 It can be used for visualisation of the data and for the analysis of the data along one given dimension.
 
 
@@ -204,10 +204,11 @@ In this section we describe Cloud computing environments and tools for cloud com
 
 ## Google Earth Engine
 
-Google Earth Engine is a cloud platform for the analysis of large geospatial datasets. 
+Google Earth Engine (GEE) is a cloud platform for the analysis of large geospatial datasets. 
 It provides easy access to the Landsat data, the Sentinel data and other different datasets. 
-It is currently free, because Google sees it more as a marketing tool. The algorithms that you want to compute on google earth engine have to be written in a strange sub language of java script and you can't bring your own already working script. 
-I see a large problem with vendor lock in, because as soon as Google decides that the computation is not free anymore, you can't easily switch to other systems. 
+It is currently free, because Google sees it more as a marketing tool. The algorithms that you want to compute on google earth engine have to be written in a strange sub language of java script and you cannot bring your own already working script. 
+We see a large problem with vendor lock in, because as soon as Google decides that the computation is not free anymore, you can't easily switch to other systems.
+The data that might be available on other cloud providers, but the algorithms have to be recoded, because GEE uses a special subset of pyhton or java script.
 The Google Earth Engine is used for example to provide the global forest cover change map.
 
 ## DIAS
@@ -251,7 +252,7 @@ Users can create a 30-day trial account to explore or process available data col
 
 ## Pangeo
 
-Pangeo is a community of like minded people which collaboratively develop software and infrastructure for Big Data geoscience research. 
+Pangeo is a community of like-minded people which collaboratively develop software and infrastructure for Big Data geoscience research. 
 The Pangeo community also promotes a software stack of interconnected python packages including [xarray](#xarray-python-package) and [Iris](#iris-python-package). 
 They also deploy this software stack as a Pangeo environment in different cloud computing facalities.  
 
