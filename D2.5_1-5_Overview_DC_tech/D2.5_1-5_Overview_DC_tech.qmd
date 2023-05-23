@@ -25,6 +25,13 @@ number-sections: true
 documentclass: article
 ---
 
+# Executive Summary
+
+In Earth System Science large gridded data is becoming more important with large model data collections or remote sensing data.
+The handling of large gridded data is important in multiple steps of the research life cycle. 
+This deliverable provides a state of the art overview of solutions for local and cloud based data storage and analysis for large gridded data. 
+This document shall not just give a raw description of available tools but should rather help categorizing tools and show how they relate to each other.
+
 # Introduction
 
 The purpose of this document is to provide the state of the art solutions for local and cloud based data storage and analysis for large gridded data.
