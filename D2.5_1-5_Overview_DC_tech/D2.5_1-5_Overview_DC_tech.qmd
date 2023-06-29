@@ -129,10 +129,10 @@ There is an overlap in different tools, which provide the same syntax to allow t
 
 ## EarthDataLab.jl
 
-Open source Julia library for with an interface for large-scale computations on Earth Data Cubes. Provides access to a variety of file formats like Zarr, NetCDF, GeoTiff and more. 
+Open source Julia library for large-scale computations on Earth Data Cubes. Provides access to a variety of file formats like Zarr, NetCDF, GeoTiff and more. 
 Enables large distributed computations by appyling arbitrary user-defined functions to huge datasets in an efficient way by respecting the underlying chunking structure of the input datasets. 
 Automatically supports multi-threaded and distributed computations or a mix of both, depending on the cluster architecture. 
-It tries to mimic the data model of the xarray python library, so that dimension names form the basis of merging broadcast operations
+It tries to mimic the data model of the xarray python library, so that dimension names form the basis of merging broadcast operations.
 
 ## Rasters.jl
 
