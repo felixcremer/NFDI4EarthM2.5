@@ -1,0 +1,36 @@
+---
+documentclass: article
+jupyter: julia-1.9
+filters:
+  - code-visibility
+---
+# Introduction
+
+```{julia}
+using Pkg
+Pkg.activate(".")
+Pkg.status()
+#using RCall
+#using PythonCall
+#R"""
+#1
+#"""
+```
+```{julia}
+exp(1)
+```
+
+```{julia}
+using RCall #| hide_line
+
+R""" #| hide_line
+version
+""" #| hide_line
+```
+
+```{julia}
+using PyCall #| hide_line
+py""" #| hide_line
+copyright()
+""" #| hide_line
+```
