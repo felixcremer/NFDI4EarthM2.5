@@ -1,0 +1,12 @@
+[deps]
+r = ""
+r-sf = ""
+r-stars = ""
+r-maps = ""
+r-lubridate = ""
+r-rnaturalearth = ""
+rioxarray = ""
+r-raster = ""
+xarray = ""
+cartopy = ""
+r-rnaturalearthdata = ""
