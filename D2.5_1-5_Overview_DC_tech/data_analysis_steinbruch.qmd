@@ -1,0 +1,91 @@
+
+
+
+
+
+
+
+```{julia}
+summer = rger[Ti=Date(1996,4,1)..Date(1996, 10,1)]
+``` 
+
+
+
+```{julia}
+winter = rger[Ti=Not(Date(1996, 4,1)..Date(1996,10,1))]
+``` 
+
+    4. Compute average temperature per pixel per year for the two seasons
+
+```{julia}
+using Statistics
+summermean = mapslices(mean, summer, dims=Ti)
+plot(summermean[:,:,1])
+```
+```{julia}
+wintermean = mapslices(mean, winter, dims=Ti)
+winterstd = mapslices(std, winter, dims=Ti)
+
+```
+Now we are going to do this computation for all the years that we have available. 
+First we download all of the data files or load them from disk, when they are already available.
+```{julia}
+
+urls = Dict(y=> "http://esgf1.dkrz.de/thredds/fileServer/cosmo-rea/reanalysis/EUR-6km/DWD/ECMWF-ERAINT/REA6/r1i1p1f1/COSMO/v1/mon/atmos/tas/v20230314/tas_EUR-6km_ECMWF-ERAINT_REA6_r1i1p1f1_COSMO_v1_mon_$(y)01-$(y)12.nc" for y in 1995:2018)
+
+
+filenames = Dict(y=> joinpath("data", split(url, "/")[end]) for (y,url) in urls)
+mkpath("data/")
+#pathdict = Dict(y => download(url, filenames[y]) for (y, url) in urls)
+# After download this should be this:
+pathdict = [glob("tas_EUR*$y*.nc", "/home/fcremer/Documents/NFDI4Earth/deliverables/data")[1] for y in 1995:2018]
+```
+
+```{julia}
+wintermeans = []
+winterstds = []
+for path in pathdict
+ds = open_dataset(path)
+tas = ds.tas
+r = set(tas, :rlat=>Y, :rlon=>X)
+rger = r[bbox]
+y = only(unique(year.(dims(r, Ti))))
+winter = rger[Ti=Not(Date(y, 4,1)..Date(y,10,1))]
+wintermean = mapslices(mean, winter, dims="Time")
+winterstd = mapslices(std, winter, dims="Time")
+push!(wintermeans, wintermean)
+push!(winterstds, winterstd)
+end
+```
+
+```{julia}
+taxis = Ti(Date.(1995:2018))
+wmean = concatenatecubes(wintermeans, taxis)
+wstds = concatenatecubes(winterstds, taxis)
+```
+
+Now we have the data cubes of winter and summer averages and standard deviations per spatial pixel.
+We can now aggregate the data spatilly and get a single time series or we can select the centroid of Germany to get a quick look at the time series
+```{julia}
+using Dates
+center = AG.centroid(projdeu)
+(x,y) = AG.getpoint(center, 0)
+tscenter = wmean[X=Near(x), Y=Near(y)]
+fig, ax, l = lines(year.(lookup(tscenter, Ti)), tscenter.data)
+fig
+```
+
+Now we can also convert the temperature unit which is currently Kelvin to Celsius by substracting 273.5 degrees. 
+```{julia}
+tscelsius = tscenter .- 273.5
+fig, ax, l = lines(year.(lookup(tscelsius, Ti)), tscelsius.data)
+```
+
+#=
+NetCDF raster files for entire Europe, near-surface air temperature:
+    7. Repeat calculation until 2019
+    8. Plot a time-series for two datasets
+Next exercise:
+    1. Average temperature per German state for the two resulting datasets
+
+=#
