@@ -31,7 +31,8 @@ In Earth System Science large gridded data is becoming more important with large
 The handling of large gridded data is important in multiple steps of the research life cycle. 
 This deliverable provides a state of the art overview of solutions for local and cloud based data storage and analysis for large gridded data. 
 This document shall not just give a raw description of available tools but should rather help categorizing tools and show how they relate to each other.
-It gives an overview of how these tools can be used from different programming languages for the analysis of gridded temperature data.
+It gives an overview of how these tools can be used from different programming languages for the analysis of gridded temperature data
+and an introduction for working with vector data cubes.
 It also entails benchmarks of the access times of different data cube access patterns from different programming languages. 
 
 
@@ -318,4 +319,7 @@ The list will be extended in the future and more data formats, tools and process
 
 
 # Introduction to Raster Data Analysis in Julia, Python and R 
+
+
+# Introduction to Vector Data Cubes in Julia, Python and R
 
