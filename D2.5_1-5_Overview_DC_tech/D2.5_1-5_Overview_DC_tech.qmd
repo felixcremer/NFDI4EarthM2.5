@@ -11,7 +11,8 @@ author:
   - Fabian Gans
   - Sibylle Hassler 
   - Arne Osterthun
-  - Edzer Pebesma 
+  - Edzer Pebesma
+  - Matthias Pohl
 affiliations:
 - id: mpibgc
   name: Max-Planck Institute for Biogeochemistry
@@ -352,6 +353,7 @@ Our benchmark study, conducted on a local Dask cluster with 2 workers (24 thread
 revealed distinct performance patterns across different file formats for multidimensional data access.
 The results demonstrated that query runtime scaled proportionally with dataset size across all formats,
 but with significant variations in efficiency.
+Figure 2 shows the comparison of the access times for the different data formats.
 Zarr exhibited superior performance characteristics,
 showing excellent scalability as query result sizes increased and achieving notable runtime reductions when transitioning from monthly to quarterly scales.
 TileDB displayed a mixed performance profile: 
@@ -363,6 +365,8 @@ This performance gap was particularly evident in larger datasets,
 where both Zarr and TileDB demonstrated superior efficiency.
 These findings provide valuable insights for selecting appropriate file formats based on specific use cases
 and data scales in scientific computing applications.
+
+![*Comparison of access times for NetCDF4, Zarr and TileDB data formats* The numbers on the x-axis describe different query types going from a single time point for a single pixel location up to a year long time series for a large spatial extent.](year_2_24_50GB.png)
 
 # Introduction to Raster Data Analysis in Julia, Python and R 
 
