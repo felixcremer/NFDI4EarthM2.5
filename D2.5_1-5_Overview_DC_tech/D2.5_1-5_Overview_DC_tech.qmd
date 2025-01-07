@@ -11,7 +11,8 @@ author:
   - Fabian Gans
   - Sibylle Hassler 
   - Arne Osterthun
-  - Edzer Pebesma 
+  - Edzer Pebesma
+  - Matthias Pohl
 affiliations:
 - id: mpibgc
   name: Max-Planck Institute for Biogeochemistry
@@ -19,6 +20,9 @@ affiliations:
 format:
   pdf:
     pdf-engine: pdflatex
+    include-in-header: 
+    - text: |
+        \usepackage{pdfpages}
   html: default
 toc: true
 number-sections: true
@@ -307,19 +311,69 @@ IPFS uses content addressable storage to distribute the file across the network 
 # Summary
 
 The authors admit that the list of tools presented here is far from complete. 
-The list will be extended in the future and more data formats, tools and processing services will be added. NFDI4Earth is an open community. In case you want to suggest additional tools to be added in the future, feel free to reach out to the NFDI4Earth Measure 2.5 team (fcremer@bgc-jena.mpg.de as representative) or start a discussion directly on [Github](https://github.com/felixcremer/NFDI4EarthM2.5/issues). 
+The list will be extended in the future and more data formats, tools and processing services will be added.
+NFDI4Earth is an open community. 
+In case you want to suggest additional tools to be added in the future,
+feel free to reach out to the NFDI4Earth Measure 2.5 team (fcremer@bgc-jena.mpg.de as representative)
+or start a discussion directly on [Github](https://github.com/felixcremer/NFDI4EarthM2.5/issues). 
 
 # Benchmarks of Zarr data input in different programming languages
 
-## Aim of these benchmarks 
+## Aim of these benchmarks
+Modern research projects, particularly in Earth System Science (ESS),
+face significant challenges in managing and processing large-scale multidimensional data.
+While traditional databases offer structured data access,
+many research projects opt for simpler storage solutions and data lakes due to their flexibility and distributed nature.
+Our benchmark study examines the efficiency and performance 
+of various data file formats specifically designed for multidimensional data retrieval in ESS applications.
+We conduct a comparative analysis focusing on popular ESS tools such as xarray and dask,
+evaluating their capabilities in handling different file formats including NetCDF4, TileDB, and Zarr.
+Our investigation addresses the specific requirements of research computing environments,
+where data access patterns vary from specialized software applications to statistical analysis and visualization needs.
+We establish a benchmark environment to assess these formats' performance in typical ESS workflows,
+examining factors such as data access speed, processing efficiency, and scalability.
+The findings of this study provide valuable insights not only for ESS researchers but also for data analytics projects across various domains,
+offering guidance for optimizing data storage and retrieval strategies in data-intensive research environments.
 
 ## Methodology
+The experiments were performed on a dedicated workstation using a modern data science stack,
+including Python 3.10.12, xarray 2024.7.0, dask 2024.8.1,
+and various format-specific libraries (tiledb 0.31.1, tiledb-cf 0.9.1, netCDF4 1.7.1.post2, and zarr 2.18.2).
+The benchmark dataset comprised ERA-5 reanalysis data,
+a comprehensive climate and weather dataset accessed through the Copernicus Climate Change Service (C3S),
+spanning two years and including five variables.
+To simulate real-world usage patterns,
+we designed a systematic set of 40 queries with increasing complexity.
+These queries ranged from simple point-based temporal retrievals to complex spatiotemporal analyses,
+including single-location queries, temporal aggregations (daily to yearly),
+and spatial queries covering various geographical regions (Germany, USA, Europe, and global).
+The experiment also incorporated altitude-based queries to test multidimensional data access patterns.
+While the relative performance comparisons remain valid,
+we acknowledge that absolute performance metrics could be further optimized through specialized system configurations.
 
 ## Results
+Our benchmark study, conducted on a local Dask cluster with 2 workers (24 threads each),
+revealed distinct performance patterns across different file formats for multidimensional data access.
+The results demonstrated that query runtime scaled proportionally with dataset size across all formats,
+but with significant variations in efficiency.
+Figure 2 shows the comparison of the access times for the different data formats.
+Zarr exhibited superior performance characteristics,
+showing excellent scalability as query result sizes increased and achieving notable runtime reductions when transitioning from monthly to quarterly scales.
+TileDB displayed a mixed performance profile: 
+while underperforming for small queries due to noticeable overhead in query execution, 
+it outperformed NetCDF4 for larger queries and achieved performance comparable to Zarr.
+NetCDF4 showed consistent limitations in scalability,
+with performance disparities becoming increasingly pronounced as query sizes grew.
+This performance gap was particularly evident in larger datasets,
+where both Zarr and TileDB demonstrated superior efficiency.
+These findings provide valuable insights for selecting appropriate file formats based on specific use cases
+and data scales in scientific computing applications.
+
+![*Comparison of access times for NetCDF4, Zarr and TileDB data formats* The numbers on the x-axis describe different query types going from a single time point for a single pixel location up to a year long time series for a large spatial extent.](year_2_24_50GB.png)
 
 
-# Introduction to Raster Data Analysis in Julia, Python and R 
 
-
-# Introduction to Vector Data Cubes in Julia, Python and R
-
+\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Raster Analysis in Julia, rasjulia}]{Intro_Raster_Data_Analysis_ENG_Julia.pdf}
+\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Raster Analysis in Python, raspython}]{Intro_Raster_Data_Analysis_ENG_Python.pdf}
+\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Raster Analysis in R, rasR}]{Intro_Raster_Data_Analysis_ENG_R.pdf}
+\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Vector Datacubes in Python and R, vecdata}]{Intro_Raster_Data_Analysis_ENG_Julia.pdf}
