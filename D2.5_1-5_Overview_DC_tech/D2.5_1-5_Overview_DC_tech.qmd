@@ -20,6 +20,9 @@ affiliations:
 format:
   pdf:
     pdf-engine: pdflatex
+    include-in-header: 
+    - text: |
+        \usepackage{pdfpages}
   html: default
 toc: true
 number-sections: true
@@ -368,8 +371,9 @@ and data scales in scientific computing applications.
 
 ![*Comparison of access times for NetCDF4, Zarr and TileDB data formats* The numbers on the x-axis describe different query types going from a single time point for a single pixel location up to a year long time series for a large spatial extent.](year_2_24_50GB.png)
 
-# Introduction to Raster Data Analysis in Julia, Python and R 
 
 
-# Introduction to Vector Data Cubes in Julia, Python and R
-
+\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Raster Analysis in Julia, rasjulia}]{Intro_Raster_Data_Analysis_ENG_Julia.pdf}
+\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Raster Analysis in Python, raspython}]{Intro_Raster_Data_Analysis_ENG_Python.pdf}
+\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Raster Analysis in R, rasR}]{Intro_Raster_Data_Analysis_ENG_R.pdf}
+\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Vector Datacubes in Python and R, vecdata}]{Intro_Raster_Data_Analysis_ENG_Julia.pdf}
