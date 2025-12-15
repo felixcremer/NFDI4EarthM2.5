@@ -307,6 +307,17 @@ The interplanetary file system <https://ipfs.io/> is a further development of th
 It would allow to have one version of a file in a larger network and if a file is requested for  download it can be retrieved from the nearest available position. 
 IPFS uses content addressable storage to distribute the file across the network and this makes it more fault tolerant and independent of single infrastructure components. 
 
+## Discrete Global Grid Systems
+
+Discrete Global Grid Systems (DGGS) tessellate the surface of the earth with hierarchical cells of equal area, minimizing distortion and loading time of large geospatial datasets, which is crucial in spatial statistics and building Machine Learning models.
+Contrary to other global grids like the UTM grid, e.g., used in Sentinel-2 products, each location is assigned to exactly one cell identifier at each given spatial refinement level.
+This eliminates tile overlaps and saves up to 33% of memory that needs to be stored, downloaded, and processed [(Bauer-Marschallinger and Falkner, 2023)](https://doi.org/10.1016/j.isprsjprs.2023.07.015).
+DGGS has been used in ESA's Soil Moisture and Ocean Salinity mission, multi-scale flood mapping, and the integration of raster and vector data, among others.
+Previous efforts focused on building grids and tools to convert between DGGS cell identifiers and geographical coordinates, leading into tools like Google S2, Uber H3, and HEALPix from NASA.
+Projects like [DGGAL](https://dggal.org/) and [GeoPlegma](https://github.com/GeoPlegma/GeoPlegma) provide libraries to use different DGGS in a uniform way.
+DGGS is not only about a different geocoding scheme but also about data structures and their indices to store and retrieve areas of interest efficiently.
+For example, [Vila et al. 2025](https://lps25.esa.int/lps25-presentations/presentations/1169/_1169.pdf) converted 1 year of Belgium's Sentinel-2 data into the columnar ClickHouse database.
+[DGGS.jl](https://github.com/danlooo/DGGS.jl) uses Zarr and a multidimensional spatial index for more efficient handling of bounding boxes in dense raster data.
 
 # Summary
 
