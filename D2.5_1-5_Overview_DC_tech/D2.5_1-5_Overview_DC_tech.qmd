@@ -226,14 +226,11 @@ We see a large problem with vendor lock in, because as soon as Google decides th
 The data that might be available on other cloud providers, but the algorithms have to be recoded, because GEE uses a special subset of pyhton or java script.
 The Google Earth Engine is used for example to provide the global forest cover change map.
 
-## DIAS
+## CDSE
 
-The DIAS are the Data and Information Access Services in the european Copernicus programme. 
-They provide centralized access to Copernicus data, information and processing tools. 
-There are five DIAS platforms online, which allow the users to discover, manipulate, process and download Copernicus data and information. 
-All DIAS platforms provide access to the Sentinel and other Copernicus datasets as well as to other additional satellite or non-space datasets. 
-The aim of the DIAS platforms is to allow the users to build data processing on the web without having to download the data to a local computer first. 
+The CDSE is the Copernicus Data Space Ecosystem and provides free and instant access to data and services from Copernicus Sentinel missions which can be used for observation and analysis. The CDSE replaces the former Data and Information Access Services (DIAS) in providing a wide range of data and information on Earth's land, oceans and atmosphere. 
 
+Besides access to the data, the CDSE also includes data processing tools and different data access possibilities, for example via the Copernicus Browser or by creating and account for a better comprehensive exploration experience. The portal also contains dashboard functionalities, use cases and tutorials, and has the option to use cloud-based tools such as JupyterLab and openEO to analyse data without previous download. 
 
 ## EOSC
 
