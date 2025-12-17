@@ -79,6 +79,9 @@ which are provided in the cloud as a multi-computer cluster.
 
 In this section we discuss data formats and data bases that are often used for the storage of large gridded geospatial data. There is in some cases an overlap between the data formats and the accompanying software which is also doing data analysis, i.e Rasdaman and TileDB.
 
+## Challenges in access patterns for AI use cases (Fabian)
+
+## Overviews and Pyramids for analysis and visualisation of large scale raster data (Felix)
 
 ## CF Conventions
 
@@ -117,6 +120,7 @@ It allows for efficient subsetting but it can not be accessed multi threaded, bu
 TileDB is an open source universal storage engine for dense and sparse multidimensional arrays. In May 2017 TileDB spun out of Intel Labs and the MIT. TileDB allows parallel I/O and supports both local as well as remote storage systems (i.e. object stores, HDFS and Lustre). Data is stored in tiles/chunks. TileDB provides filters like compression and byte shuffling that can be applied on the chunk/tile level. Instead of writing the data in place, TileDB creates a new fragment with each write operation. While this idea of fragments improves latency for write operations this introduces overhead for read operations.
 
 ## Zarr
+Should we add geozarr here?
 
 Zarr is a data format for handling of large N-dimensional typed arrays. It focuses on support for distributed storage systems (i.e. object stores). 
 It aims to provide efficient I/O for parallel computing.
@@ -129,6 +133,7 @@ Examples:
 * static [STAC](#spatio-temporal-asset-catalog-stac) to [CMIP6 on GCS](https://github.com/pangeo-data/pangeo-datastore-stac/blob/master/master/climate/cmip6_gcs/collection.json)
 * [reading Zarr files with R](https://r-spatial.org/r/2022/09/13/zarr.html) blog post
 
+
 # Analysis software
 
 In this section we describe software which is used to analyse the data. 
@@ -136,6 +141,7 @@ These software solutions are mostly installed on a local computer by single pers
 There is an overlap in different tools, which provide the same syntax to allow the analysis on a local computer as in a cloud computing environment, i.e. OpenEO, OpenDataCube.
 
 ## EarthDataLab.jl
+Should we replace this by YAXArrays?
 
 Open source Julia library for large-scale computations on Earth Data Cubes. Provides access to a variety of file formats like Zarr, NetCDF, GeoTiff and more. 
 Enables large distributed computations by appyling arbitrary user-defined functions to huge datasets in an efficient way by respecting the underlying chunking structure of the input datasets. 
@@ -147,6 +153,7 @@ It tries to mimic the data model of the xarray python library, so that dimension
 Rasters.jl is a Julia package to work with rasterized spatial data. It can open data from GeoTiff, NetCDF and R grd files. It provides a standardised interface so that many source data types can be used with identical syntax. This way, the user does not have to deal with the specifics of spatial file types. 
 It can be used for visualisation of the data and for the analysis of the data along one given dimension.
 
+## PyramidScheme.jl (Felix)
 
 ## Rasdaman
 
@@ -225,6 +232,8 @@ It is currently free, because Google sees it more as a marketing tool. The algor
 We see a large problem with vendor lock in, because as soon as Google decides that the computation is not free anymore, you can't easily switch to other systems.
 The data that might be available on other cloud providers, but the algorithms have to be recoded, because GEE uses a special subset of pyhton or java script.
 The Google Earth Engine is used for example to provide the global forest cover change map.
+
+## Copernicus Data Space Ecosystem (CDSE) (needs to be written)
 
 ## DIAS
 
@@ -307,6 +316,7 @@ The interplanetary file system <https://ipfs.io/> is a further development of th
 It would allow to have one version of a file in a larger network and if a file is requested for  download it can be retrieved from the nearest available position. 
 IPFS uses content addressable storage to distribute the file across the network and this makes it more fault tolerant and independent of single infrastructure components. 
 
+## Discrete Global Grid Systems (DGGS) (Daniel 0.5 pages)
 
 # Summary
 
