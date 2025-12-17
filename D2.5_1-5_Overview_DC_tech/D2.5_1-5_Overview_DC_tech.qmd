@@ -74,6 +74,13 @@ which are provided in the cloud as a multi-computer cluster.
 
 ![*Overview of tools, their type and cloud-readiness* Be aware that there are some grey zones in this classification and many of the formats/tools at the lower end might be used in a cloud-context as well. However, we want to show the distinction between still widely used legacy tools that started before the advent of cloud computing and newer tools that were designed specifically with cloud computing in mind.](overview.png)
 
+### A few notes of AI-readiness of geospatial data
+
+Since the start of this overview of emerging technologies for large-scale geospatial analysis, the largest trend in data analysis has been the rise of Artificial Intelligence (AI) and Machine Learning (ML). AI is now present in many areas of scientific data analysis, including geospatial data. In this context, the term "AI-readiness" was introduced to describe the suitability of geospatial data and tools for AI applications. 
+
+Since AI is an overarching term that includes many different techniques and methods, it is difficult to give a precise definition of AI-readiness. Depending on the specific method and use case, data access patterns and computational requirements can vary significantly. In terms of data management, the requirements and tradeoffs for AI applications are similar to those for traditional data analysis. For example, when working with large time series data to train LSTM-like models, efficient access to temporal data is crucial. On the other hand, when training convolutional neural networks (CNNs) on image data, efficient spatial access patterns are more important. This is a similar situation as with traditional geospatial analysis, where different algorithms may require different data access patterns.
+
+In the end the data scientist needs to understand the requirements of the AI method they want to use and choose the right data format and tool accordingly. For this reason, we believe that the overview provided in this document is also useful for AI applications, as it helps to understand the capabilities and limitations of different data formats and tools for geospatial analysis.
 
 # Data formats and databases
 
