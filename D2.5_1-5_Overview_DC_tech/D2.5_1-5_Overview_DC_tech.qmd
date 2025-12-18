@@ -275,6 +275,14 @@ Pangeo is a community of like-minded people which collaboratively develop softwa
 The Pangeo community also promotes a software stack of interconnected python packages including [xarray](#xarray-python-package) and [Iris](#iris-python-package). 
 They also deploy this software stack as a Pangeo environment in different cloud computing facalities.  
 
+
+## LexCube
+
+LexCube is a library for interactively visualizing three-dimensional data cubes.
+The tool provides a client-server application for visualizing large scale data sets as a six sided cube. 
+The interactive visualisation works by pre-generating tiles of the data when the data is started, so that users will experience minimal latency while interacting with the data. 
+LexCube was partially developed as a [NFDI4Earth Pilot](https://zenodo.org/records/7822389)
+
 # Miscellaneous Technologies
 
 ## Spatio Temporal Asset Catalog (STAC)
