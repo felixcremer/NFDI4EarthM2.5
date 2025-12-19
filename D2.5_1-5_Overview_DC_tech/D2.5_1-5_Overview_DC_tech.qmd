@@ -86,6 +86,10 @@ In the end the data scientist needs to understand the requirements of the AI met
 
 In this section we discuss data formats and data bases that are often used for the storage of large gridded geospatial data. There is in some cases an overlap between the data formats and the accompanying software which is also doing data analysis, i.e Rasdaman and TileDB.
 
+## Overviews and pyramids for analysis and visualisation of large scale raster data
+
+The 
+
 
 ## CF Conventions
 
@@ -278,10 +282,16 @@ They also deploy this software stack as a Pangeo environment in different cloud 
 
 ## LexCube
 
-LexCube is a library for interactively visualizing three-dimensional data cubes.
-The tool provides a client-server application for visualizing large scale data sets as a six sided cube. 
-The interactive visualisation works by pre-generating tiles of the data when the data is started, so that users will experience minimal latency while interacting with the data. 
-LexCube was partially developed as a [NFDI4Earth Pilot](https://zenodo.org/records/7822389)
+LexCube is a software for interactively visualizing three-dimensional
+data cubes, available as a website and a Python package.
+The tool allows to interactively visualize and explore
+large scale Earth system science data sets as 3D data cubes.
+For the visualization the data is saved as tiles at various
+levels-of-detail,
+which can be pre-generated so that users will experience minimal latency
+while interacting with the data.
+LexCube was initially developed as a [NFDI4Earth
+Pilot](https://zenodo.org/records/7822389)
 
 # Miscellaneous Technologies
 
