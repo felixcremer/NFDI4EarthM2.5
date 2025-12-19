@@ -88,8 +88,12 @@ In this section we discuss data formats and data bases that are often used for t
 
 ## Overviews and pyramids for analysis and visualisation of large scale raster data
 
-The 
-
+Overview (also called pyramids) for geospatial data are precomputed,
+downsampled copies of the original raster at multiple resolutions that dramatically speed up interactive visualisation.
+By storing several lower-resolution representations inside the file (or alongside it),
+viewers and mapping libraries can request an appropriate level for the display scale instead of resampling the full-resolution data on every frame, reducing CPU, memory, and data loading.
+Overviews can be constructed with different  resampling methods (nearest, average, cubic) chosen to balance sharpness and artifact suppression.
+For web maps and large datasets, well-built overviews plus a suitable tile cache or cloud-optimized GeoTIFF layout yield smooth pan/zoom performance and lower server costs.
 
 ## CF Conventions
 
