@@ -293,6 +293,14 @@ while interacting with the data.
 LexCube was initially developed as a [NFDI4Earth
 Pilot](https://zenodo.org/records/7822389)
 
+## PyramidScheme.jl
+
+[PyramidScheme.jl](https://github.com/JuliaDataCubes/PyramidScheme.jl) is a Julia package to prepare, visualise and analyse large raster data sets. 
+It allows to compute spatial overviews for given zarr raster datasets.
+These overviews can then be used to interactively visualize the datasets with very low latency.
+Given multiple datasets with a pyramid structure the data analysis can be done on the pyramids lazily so that only the data is loaded and computed that is currently needed for the visualisation. 
+
+
 # Miscellaneous Technologies
 
 ## Spatio Temporal Asset Catalog (STAC)
