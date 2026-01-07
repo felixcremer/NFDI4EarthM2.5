@@ -86,6 +86,14 @@ In the end the data scientist needs to understand the requirements of the AI met
 
 In this section we discuss data formats and data bases that are often used for the storage of large gridded geospatial data. There is in some cases an overlap between the data formats and the accompanying software which is also doing data analysis, i.e Rasdaman and TileDB.
 
+## Overviews and pyramids for analysis and visualisation of large scale raster data
+
+Overview (also called pyramids) for geospatial data are precomputed,
+downsampled copies of the original raster at multiple resolutions that dramatically speed up interactive visualisation.
+By storing several lower-resolution representations inside the file (or alongside it),
+viewers and mapping libraries can request an appropriate level for the display scale instead of resampling the full-resolution data on every frame, reducing CPU, memory, and data loading.
+Overviews can be constructed with different  resampling methods (nearest, average, cubic) chosen to balance sharpness and artifact suppression.
+For web maps and large datasets, well-built overviews plus a suitable tile cache or cloud-optimized GeoTIFF layout yield smooth pan/zoom performance and lower server costs.
 
 ## CF Conventions
 
@@ -274,6 +282,28 @@ Users can create a 30-day trial account to explore or process available data col
 Pangeo is a community of like-minded people which collaboratively develop software and infrastructure for Big Data geoscience research. 
 The Pangeo community also promotes a software stack of interconnected python packages including [xarray](#xarray-python-package) and [Iris](#iris-python-package). 
 They also deploy this software stack as a Pangeo environment in different cloud computing facalities.  
+
+
+## LexCube
+
+LexCube is a software for interactively visualizing three-dimensional
+data cubes, available as a website and a Python package.
+The tool allows to interactively visualize and explore
+large scale Earth system science data sets as 3D data cubes.
+For the visualization the data is saved as tiles at various
+levels-of-detail,
+which can be pre-generated so that users will experience minimal latency
+while interacting with the data.
+LexCube was initially developed as a [NFDI4Earth
+Pilot](https://zenodo.org/records/7822389)
+
+## PyramidScheme.jl
+
+[PyramidScheme.jl](https://github.com/JuliaDataCubes/PyramidScheme.jl) is a Julia package to prepare, visualise and analyse large raster data sets. 
+It allows to compute spatial overviews for given zarr raster datasets.
+These overviews can then be used to interactively visualize the datasets with very low latency.
+Given multiple datasets with a pyramid structure the data analysis can be done on the pyramids lazily so that only the data is loaded and computed that is currently needed for the visualisation. 
+
 
 # Miscellaneous Technologies
 
