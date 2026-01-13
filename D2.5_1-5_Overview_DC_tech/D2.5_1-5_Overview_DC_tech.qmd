@@ -10,6 +10,7 @@ author:
   - Yomna Eid
   - Fabian Gans
   - Sibylle Hassler 
+  - Daniel Loos
   - Arne Osterthun
   - Edzer Pebesma
   - Matthias Pohl
@@ -421,4 +422,4 @@ and data scales in scientific computing applications.
 \includepdf[pages=-, addtotoc={1, section, 1, Introduction to Raster Analysis in Julia, rasjulia}]{Intro_Raster_Data_Analysis_ENG_Julia.pdf}
 \includepdf[pages=-, addtotoc={1, section, 1, Introduction to Raster Analysis in Python, raspython}]{Intro_Raster_Data_Analysis_ENG_Python.pdf}
 \includepdf[pages=-, addtotoc={1, section, 1, Introduction to Raster Analysis in R, rasR}]{Intro_Raster_Data_Analysis_ENG_R.pdf}
-\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Vector Datacubes in Python and R, vecdata}]{Intro_Raster_Data_Analysis_ENG_Julia.pdf}
+\includepdf[pages=-, addtotoc={1, section, 1, Introduction to Vector Datacubes in Python and R, vecdata}]{intro_vectordatacubes.pdf}
