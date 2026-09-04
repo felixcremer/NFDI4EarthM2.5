@@ -75,6 +75,37 @@ which are provided in the cloud as a multi-computer cluster.
 
 ![*Overview of tools, their type and cloud-readiness* Be aware that there are some grey zones in this classification and many of the formats/tools at the lower end might be used in a cloud-context as well. However, we want to show the distinction between still widely used legacy tools that started before the advent of cloud computing and newer tools that were designed specifically with cloud computing in mind.](overview.png)
 
+# Governance, Funding and Sustainability of Geospatial Open Source Projects
+
+Open Source software is dependent on a developer community which has the time and capability to make relevant changes to the software. 
+In this section we look at the governance, funding and developer community size of different geospatial open source communities. 
+
+## Governance of Geospatial open source communities
+
+The governance of geospatial varies between the different communities and the degree of governance also depends on the size of the developer and user communities with larger communities having a more organized governance approach. 
+Some repositories have no governance guidelines specified while some of the projects which are driven mainly by a single main developer have specified that this developer or a small group of repository owners make the final decision. 
+Larger projects or overall ecosystems have selected a steering committee or project committee for final decisions. Examples for this kind of governance are  QGIS, Open Data Cube or the JuliaGeo ecosystem.
+These steering committees have a size of 7 to 12 persons.
+
+## Funding of Geospatial Open Source Projects
+
+The funding of geospatial open source software is coming from very different sources. 
+Most projects don't state their funding source which might be an indicator that developers are doing it in their free time or sometimes on their work time because they need the project for their day to day work.
+Some projects state that they are mainly developed by people in specific institutes or firms.
+Some of the software development is funded via scientific project work where the software is developed either as a specific deliverable or as a needed tool for the scientific outcome. 
+Larger projects like GeoServer, GDAL and QGIS have funding via commercial sponsors or in the case of QGIS via membership fees. 
+
+
+
+## Index of software contributions
+
+We developed the Open Source Contributor Index to indicate the contributor base of an open source software project. The OSS contributor index is the number of contributors n with at least n commits to a given repository. 
+This is coarse indicator of the contributor size and can determine whether the project is a single developer endeavour, a dedicated small group or a very large contributor base. 
+The index should not be compared between repositories too strictly, because the index also depends on the overall number of commits to the repository.
+An index below 1 shows that the project is only developed by a single developer. Below 10 means, that the development is split between a dedicated group of people and above 10 there is a significant number of contributors.
+
+![*Open Source contributions index* The figure shows the open source contribution index on the y axis and the number of github stars on the x-axis. ](h_index_vs_stars.png)
+
 ### A few notes of AI-readiness of geospatial data
 
 Since the start of this overview of emerging technologies for large-scale geospatial analysis, the largest trend in data analysis has been the rise of Artificial Intelligence (AI) and Machine Learning (ML). AI is now present in many areas of scientific data analysis, including geospatial data. In this context, the term "AI-readiness" was introduced to describe the suitability of geospatial data and tools for AI applications. 
