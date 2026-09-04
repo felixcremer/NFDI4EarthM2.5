@@ -49,7 +49,8 @@ function batch_main(repos::AbstractVector{<:AbstractString};
                     auth = nothing,
                     skip_bots::Bool = true,
                     output::AbstractString = "results.csv",
-                    max_wait::Real = 60)
+                    max_wait::Real = 60,
+                    save=true)
     since = today() - Year(years)
     n = length(repos)
     df = DataFrame(repo = String[],
@@ -90,7 +91,9 @@ function batch_main(repos::AbstractVector{<:AbstractString};
         println("  [$i/$n] $repo — $status")
         sleep(0.2)
     end
+    if save
     CSV.write(output, df)
+    end
     _kg_stash(:results, df)
     return df
 end

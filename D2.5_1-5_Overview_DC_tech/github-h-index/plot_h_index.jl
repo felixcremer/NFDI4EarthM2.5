@@ -155,7 +155,7 @@ end
 
 function make_static_plots(df::DataFrame; outdir = ".")
     mkpath(outdir)
-    CM = CairoMakie
+    CM = Makie
 
     languages = sort(unique(df.language))
 
@@ -174,11 +174,11 @@ function make_static_plots(df::DataFrame; outdir = ".")
     for row in eachrow(df)
         CM.text!(ax1, shortlabel(row.repo);
                  position = (row.stars, row.h_index),
-                 fontsize = 5, offset = (5, 0), color = :gray30)
+                 fontsize = 10, offset = (5, 0), color = :gray30)
     end
     CM.Legend(fig1[1, 2], ax1)
-    CM.save(joinpath(outdir, "h_index_vs_stars.png"), fig1; px_per_unit = 2)
-    CM.save(joinpath(outdir, "h_index_vs_stars.svg"), fig1)
+#    CM.save(joinpath(outdir, "h_index_vs_stars.png"), fig1; px_per_unit = 2)
+#    CM.save(joinpath(outdir, "h_index_vs_stars.svg"), fig1)
 
     fig2 = CM.Figure(size = (700, 500))
     ax2 = CM.Axis(fig2[1, 1];
@@ -195,9 +195,10 @@ function make_static_plots(df::DataFrame; outdir = ".")
     for row in eachrow(df)
         CM.text!(ax2, shortlabel(row.repo);
                  position = (row.total_commits, row.h_index),
-                 fontsize = 5, offset = (5, 0), color = :gray30)
+                 fontsize = 10, offset = (5, 0), color = :gray30)
     end
     CM.Legend(fig2[1, 2], ax2)
+    return fig1, fig2
     CM.save(joinpath(outdir, "commits_vs_h_index.png"), fig2; px_per_unit = 2)
     CM.save(joinpath(outdir, "commits_vs_h_index.svg"), fig2)
 end
