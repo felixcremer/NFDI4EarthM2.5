@@ -1,0 +1,11 @@
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+GitHub = "bc5e4493-9b4d-5f90-b8aa-2b2bcaad7a26"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+KaimonGate = "5ee84a8c-75bd-412f-a7b8-4e6463aa635f"
+PlotlyBase = "a03496cd-edff-5a9b-9e67-9cda94a718b5"
+
+[compat]
+JSON = "0.21"
