@@ -64,12 +64,12 @@ The tools that are described in this document can be used for different tasks.
 These tasks range from extraction of a subset of data for a given spatial and temporal extent to the visualisation of the data, to the processing of the data in batches which also includes machine learning training. These different tasks have all different software needs.
 
 Another angle to look at is the size of the dataset. 
-The size of the data set can be described spatially, going from a local dataset like a single satellite acquisition to a regional dataset to a global harmonised dataset. 
+The size of the dataset can be described spatially, going from a local dataset like a single satellite acquisition to a regional dataset to a global harmonised dataset. 
 The size can also be in terms of the occupied data storage from a few megabytes to multiple petabytes.
 
 A classification of the type of the tool and the cloud readiness, describing, how well one can work on larger scale computations with this tool is shown in Figure 1. 
 We acknowledge that "Cloud readiness" is not a well-defined term and Cloud readiness can have different meanings for tools belonging to different categories. 
-For data formats a higher cloud readiness indicates, that cloud datasets data can be accessed partially, i.e. a dataset which is provided in an object store in the cloud does not need to be downloaded in full to access only a small subset of the data.
+For data formats a higher cloud readiness indicates, that cloud datasets can be accessed partially, i.e. a dataset which is provided in an object store in the cloud does not need to be downloaded in full to access only a small subset of the data.
 For software the cloud readiness entails, that the software can semi automatically use the different computing resources in a scalable way, 
 which are provided in the cloud as a multi-computer cluster. 
 
@@ -129,7 +129,7 @@ For web maps and large datasets, well-built overviews plus a suitable tile cache
 
 ## CF Conventions
 
-The CF  (Climate and Forecast) Metadata conventions are a set of rules to describe which metadata are necessary to describe a data set. 
+The CF  (Climate and Forecast) Metadata conventions are a set of rules to describe which metadata are necessary to describe a dataset. 
 The CF conventions have been developed on top of the NetCDF format. 
 The aim of the CF conventions is to set the metadata to provide a definitive description of various datasets, including, what the variable represents, the spatial and temporal extent. 
 The CF conventions include self-describing data, so that no external table for the data description is needed.
@@ -168,7 +168,7 @@ TileDB is an open source universal storage engine for dense and sparse multidime
 Zarr is a data format for handling of large N-dimensional typed arrays. It focuses on support for distributed storage systems (i.e. object stores). 
 It aims to provide efficient I/O for parallel computing.
 It can handle different chunks and there are multiple extensions of the data format for different use cases. It can handle compression. 
-It is suitable for data sets that are larger than RAM. The computations on these datasets should be parallizable.
+It is suitable for datasets that are larger than RAM. The computations on these datasets should be parallizable.
 The conceptual data structure uses CDL and [CF conventions](#cf-conventions), which it shares with [NetCDF](#netcdf).
 
 Examples:
@@ -262,7 +262,7 @@ R package [`rstac`](https://cran.r-project.org/web/packages/rstac/index.html) pr
 
 # Cloud solutions
 
-In this section we describe Cloud computing environments and tools for cloud computing environments which are used to scale the analysis which might be prepared and tested on a smaller setup on a local computer to a larger computational platform to enable the analysis of very large data sets which can not be downloaded locally. 
+In this section we describe Cloud computing environments and tools for cloud computing environments which are used to scale the analysis which might be prepared and tested on a smaller setup on a local computer to a larger computational platform to enable the analysis of very large datasets which can not be downloaded locally. 
 
 ## Google Earth Engine
 
@@ -321,7 +321,7 @@ They also deploy this software stack as a Pangeo environment in different cloud 
 LexCube is a software for interactively visualizing three-dimensional
 data cubes, available as a website and a Python package.
 The tool allows to interactively visualize and explore
-large scale Earth system science data sets as 3D data cubes.
+large scale Earth system science datasets as 3D data cubes.
 For the visualization the data is saved as tiles at various
 levels-of-detail,
 which can be pre-generated so that users will experience minimal latency
@@ -331,7 +331,7 @@ Pilot](https://zenodo.org/records/7822389)
 
 ## PyramidScheme.jl
 
-[PyramidScheme.jl](https://github.com/JuliaDataCubes/PyramidScheme.jl) is a Julia package to prepare, visualise and analyse large raster data sets. 
+[PyramidScheme.jl](https://github.com/JuliaDataCubes/PyramidScheme.jl) is a Julia package to prepare, visualise and analyse large raster datasets. 
 It allows to compute spatial overviews for given zarr raster datasets.
 These overviews can then be used to interactively visualize the datasets with very low latency.
 Given multiple datasets with a pyramid structure the data analysis can be done on the pyramids lazily so that only the data is loaded and computed that is currently needed for the visualisation. 
