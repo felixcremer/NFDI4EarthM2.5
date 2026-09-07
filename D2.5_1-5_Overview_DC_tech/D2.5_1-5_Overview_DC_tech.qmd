@@ -82,39 +82,39 @@ In this section we look at the governance, funding and developer community size 
 
 ## Governance of Geospatial open source communities
 
-The governance of geospatial software projects varies between the different communities and the degree of governance also depends on the size of the developer and user communities with larger communities having a more organized governance approach. 
-Some repositories have no governance guidelines specified while some of the projects which are driven mainly by a single main developer have specified that this developer or a small group of repository owners make the final decision. 
-Larger projects or overall ecosystems have selected a steering committee or project committee for final decisions. Examples for this kind of governance are  QGIS, Open Data Cube or the JuliaGeo ecosystem.
-These steering committees have a size of 7 to 12 persons.
+Governance varies between geospatial software communities and depends on the size of the developer and user communities; larger communities tend to adopt a more organized approach. 
+Some repositories specify no governance guidelines, whereas projects driven mainly by a single developer state that this developer, or a small group of repository owners, makes the final decision. 
+Larger projects or overall ecosystems have selected a steering committee or project committee for final decisions. Examples of this kind of governance are QGIS, Open Data Cube, and the JuliaGeo ecosystem.
+These steering committees have 7 to 12 members.
 
 ## Funding of Geospatial Open Source Projects
 
-The funding of geospatial open source software is coming from very different sources. 
-Most projects don't state their funding source which might be an indicator that developers are doing it in their free time or sometimes on their work time because they need the project for their day to day work.
+The funding of geospatial open source software comes from very different sources. 
+Most projects do not state their funding source, which may indicate that developers contribute in their free time, or on work time because they need the project for their day-to-day work.
 Some projects state that they are mainly developed by people in specific institutes or firms.
-Some of the software development is funded via scientific project work where the software is developed either as a specific deliverable or as a needed tool for the scientific outcome. 
+Some software development is funded through scientific projects, where the software is produced either as a specific deliverable or as a tool needed for the scientific outcome. 
 Larger projects like GeoServer, GDAL and QGIS have funding via commercial sponsors or in the case of QGIS via membership fees. 
 
 
 
 ## Index of software contributions
 
-We developed the Open Source Contributor Index to indicate the contributor base of an open source software project. The OSS contributor index is the number of contributors n with at least n commits to a given repository. 
-This is coarse indicator of the contributor size and can determine whether the project is a single developer endeavour, a dedicated small group or a very large contributor base. 
+We developed the Open Source Contributor Index to indicate the contributor base of an open source software project. The index is the largest number n such that at least n contributors each have n or more commits to a given repository. 
+This is a coarse indicator of the contributor size and can determine whether the project is a single developer endeavour, a dedicated small group or a very large contributor base. 
 The index should not be compared between repositories too strictly, because the index also depends on the overall number of commits to the repository.
-An index below 1 shows that the project is only developed by a single developer. Below 10 means, that the development is split between a dedicated group of people and above 10 there is a significant number of contributors.
-This index correlates strongly with the number of stars on github as a measure of popularity.
+An index of 1 shows that a single contributor has driven the project alone. A value below 10 indicates that development is spread across a dedicated group of people, while an index above 10 reflects a significant number of contributors.
+This index correlates strongly with the number of GitHub stars which we used as a proxy for popularity.
 A small contributor index with a high number of stars shows a high risk of a popular project which is dependent on a very small number of contributors.
  
-![*Open Source contributions index* The figure shows the open source contribution index on the y axis and the number of github stars on the x-axis. ](h_index_vs_stars.png)
+![*Open Source contributions index* The figure shows the open source contribution index on the y-axis and the number of GitHub stars on the x-axis. ](h_index_vs_stars.png)
 
-### A few notes of AI-readiness of geospatial data
+### A few notes on the AI-readiness of geospatial data
 
-Since the start of this overview of emerging technologies for large-scale geospatial analysis, the largest trend in data analysis has been the rise of Artificial Intelligence (AI) and Machine Learning (ML). AI is now present in many areas of scientific data analysis, including geospatial data. In this context, the term "AI-readiness" was introduced to describe the suitability of geospatial data and tools for AI applications. 
+Since the start of this overview of emerging technologies for large-scale geospatial analysis, the dominant trend in data analysis has been the rise of Artificial Intelligence (AI) and Machine Learning (ML). AI is now present in many areas of scientific data analysis, including geospatial data. In this context, the term "AI-readiness" was introduced to describe the suitability of geospatial data and tools for AI applications. 
 
-Since AI is an overarching term that includes many different techniques and methods, it is difficult to give a precise definition of AI-readiness. Depending on the specific method and use case, data access patterns and computational requirements can vary significantly. In terms of data management, the requirements and tradeoffs for AI applications are similar to those for traditional data analysis. For example, when working with large time series data to train LSTM-like models, efficient access to temporal data is crucial. On the other hand, when training convolutional neural networks (CNNs) on image data, efficient spatial access patterns are more important. This is a similar situation as with traditional geospatial analysis, where different algorithms may require different data access patterns.
+Since AI is an overarching term that includes many different techniques and methods, it is difficult to give a precise definition of AI-readiness. Depending on the specific method and use case, data access patterns and computational requirements can vary significantly. In terms of data management, the requirements and tradeoffs for AI applications are similar to those for traditional data analysis. For example, when working with large time series data to train LSTM-like models, efficient access to temporal data is crucial. On the other hand, when training convolutional neural networks (CNNs) on image data, efficient spatial access patterns are more important. This is a situation similar to that of traditional geospatial analysis, where different algorithms may require different data access patterns.
 
-In the end the data scientist needs to understand the requirements of the AI method they want to use and choose the right data format and tool accordingly. For this reason, we believe that the overview provided in this document is also useful for AI applications, as it helps to understand the capabilities and limitations of different data formats and tools for geospatial analysis.
+Ultimately, the data scientist needs to understand the requirements of the AI method they want to use and choose the right data format and tool accordingly. For this reason, we believe that the overview provided in this document is also useful for AI applications, as it helps to understand the capabilities and limitations of different data formats and tools for geospatial analysis.
 
 # Data formats and databases
 
