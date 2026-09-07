@@ -38,7 +38,7 @@ This deliverable provides a state of the art overview of solutions for local and
 This document shall not just give a raw description of available tools but should rather help categorizing tools and show how they relate to each other.
 It gives an overview of how these tools can be used from different programming languages for the analysis of gridded temperature data
 and an introduction for working with vector data cubes.
-It also entails benchmarks of the access times of different data cube access patterns from different programming languages. 
+It also contains benchmarks of the access times of different data cube access patterns from different programming languages. 
 
 
 # Introduction
@@ -131,7 +131,7 @@ For web maps and large datasets, well-built overviews plus a suitable tile cache
 
 The CF  (Climate and Forecast) Metadata conventions are a set of rules to describe which metadata are necessary to describe a data set. 
 The CF conventions have been developed on top of the NetCDF format. 
-The aim of the CF conventions is to set the metadata to provide a definitive descrpition of various datasets, including, what the variable represents, the spatial and temporal extent. 
+The aim of the CF conventions is to set the metadata to provide a definitive description of various datasets, including, what the variable represents, the spatial and temporal extent. 
 The CF conventions include self-describing data, so that no external table for the data description is needed.
 CF conventions constrain the [Common Data Language (CDL)](https://www.unidata.ucar.edu/software/netcdf/workshops/most-recent/nc3model/Cdl.html), and CF conventions and CDL are also the basis for [Zarr files](#zarr).
 
@@ -156,7 +156,7 @@ of their support for MPI (Message Passing Interface) based distributed read and 
 
 NetCDF stands for Network Common Data Form and is one of the standard data formats in the geosciences. It is a binary format. The development for NetCDF started in 1988 by the University Corporation for Atmospheric Research (UCAR). A NetCDF file is self describing, which means, that it includes a header that describes the data that is included in the netcdf file. 
 The most common used NetCDF version is NetCDF-4 which is based on the [HDF 5](#hdf5) format. 
-It allows for efficient subsetting but it can not be accessed multi threaded, but supports multi-process read/write operations through mpi.
+It allows for efficient subsetting but it cannot be accessed multi-threaded, but supports multi-process read/write operations through MPI.
 
 
 ## TileDB 
@@ -167,7 +167,7 @@ TileDB is an open source universal storage engine for dense and sparse multidime
 
 Zarr is a data format for handling of large N-dimensional typed arrays. It focuses on support for distributed storage systems (i.e. object stores). 
 It aims to provide efficient I/O for parallel computing.
-It can handle different chunks and there are mutliple extensions of the data format for different use cases. It can handle compression. 
+It can handle different chunks and there are multiple extensions of the data format for different use cases. It can handle compression. 
 It is suitable for data sets that are larger than RAM. The computations on these datasets should be parallizable.
 The conceptual data structure uses CDL and [CF conventions](#cf-conventions), which it shares with [NetCDF](#netcdf).
 
@@ -246,7 +246,7 @@ It is mainly used for the analysis of Earth observation data in the framework of
 
 ## stars (R package)
 
-R package [`stars`](https://r-spatial.github.io/stars/) is a package for handling and analysing raster and vector data cubes, with arbitrary amount of dimensions. It uses the GDAL C++ Multidimensional Array interface (through R package [`sf`](ttps://r-spatial.github.io/sf/)) to read and write raster or vector data cubes, or sections of them (slices, limiting dimension ranges, or strided reads: reading dimensions at lower resolution)
+The R package [`stars`](https://r-spatial.github.io/stars/) is for handling and analysing raster and vector data cubes, with an arbitrary number of dimensions. It uses the GDAL C++ Multidimensional Array interface (through the R package [`sf`](https://r-spatial.github.io/sf/)) to read and write raster or vector data cubes, or sections of them (slices, limiting dimension ranges, or strided reads: reading dimensions at lower resolution)
 
 ## terra (R package)
 
@@ -268,16 +268,16 @@ In this section we describe Cloud computing environments and tools for cloud com
 
 Google Earth Engine (GEE) is a cloud platform for the analysis of large geospatial datasets. 
 It provides easy access to the Landsat data, the Sentinel data and other different datasets. 
-It is currently free, because Google sees it more as a marketing tool. The algorithms that you want to compute on google earth engine have to be written in a strange sub language of java script and you cannot bring your own already working script. 
+It is currently free, because Google sees it more as a marketing tool. The algorithms that you want to compute on Google Earth Engine have to be written in a strange sublanguage of JavaScript and you cannot bring your own already working script. 
 We see a large problem with vendor lock in, because as soon as Google decides that the computation is not free anymore, you can't easily switch to other systems.
-The data that might be available on other cloud providers, but the algorithms have to be recoded, because GEE uses a special subset of pyhton or java script.
+The data might be available on other cloud providers, but the algorithms have to be recoded, because GEE uses a special subset of Python or JavaScript.
 The Google Earth Engine is used for example to provide the global forest cover change map.
 
 ## CDSE
 
 The CDSE is the Copernicus Data Space Ecosystem and provides free and instant access to data and services from Copernicus Sentinel missions which can be used for observation and analysis. The CDSE replaces the former Data and Information Access Services (DIAS) in providing a wide range of data and information on Earth's land, oceans and atmosphere. 
 
-Besides access to the data, the CDSE also includes data processing tools and different data access possibilities, for example via the Copernicus Browser or by creating and account for a better comprehensive exploration experience. The portal also contains dashboard functionalities, use cases and tutorials, and has the option to use cloud-based tools such as JupyterLab and openEO to analyse data without previous download. 
+Besides access to the data, the CDSE also includes data processing tools and different data access possibilities, for example via the Copernicus Browser or by creating an account for a better comprehensive exploration experience. The portal also contains dashboard functionalities, use cases and tutorials, and has the option to use cloud-based tools such as JupyterLab and openEO to analyse data without previous download. 
 
 ## EOSC
 
@@ -313,7 +313,7 @@ Users can create a 30-day trial account to explore or process available data col
 
 Pangeo is a community of like-minded people which collaboratively develop software and infrastructure for Big Data geoscience research. 
 The Pangeo community also promotes a software stack of interconnected python packages including [xarray](#xarray-python-package) and [Iris](#iris-python-package). 
-They also deploy this software stack as a Pangeo environment in different cloud computing facalities.  
+They also deploy this software stack as a Pangeo environment in different cloud computing facilities.  
 
 
 ## LexCube
@@ -379,7 +379,7 @@ Discrete Global Grid Systems (DGGS) tessellate the surface of the earth with hie
 Contrary to other global grids like the UTM grid, e.g., used in Sentinel-2 products, each location is assigned to exactly one cell identifier at each given spatial refinement level.
 This eliminates tile overlaps and saves up to 33% of memory that needs to be stored, downloaded, and processed [(Bauer-Marschallinger and Falkner, 2023)](https://doi.org/10.1016/j.isprsjprs.2023.07.015).
 DGGS has been used in ESA's Soil Moisture and Ocean Salinity mission, multi-scale flood mapping, and the integration of raster and vector data, among others.
-Previous efforts focused on building grids and tools to convert between DGGS cell identifiers and geographical coordinates, leading into tools like Google S2, Uber H3, and HEALPix from NASA.
+Previous efforts focused on building grids and tools to convert between DGGS cell identifiers and geographical coordinates, leading to tools like Google S2, Uber H3, and HEALPix from NASA.
 Projects like [DGGAL](https://dggal.org/) and [GeoPlegma](https://github.com/GeoPlegma/GeoPlegma) provide libraries to use different DGGS in a uniform way.
 DGGS is not only about a different geocoding scheme but also about data structures and their indices to store and retrieve areas of interest efficiently.
 For example, [Vila et al. 2025](https://lps25.esa.int/lps25-presentations/presentations/1169/_1169.pdf) converted 1 year of Belgium's Sentinel-2 data into the columnar ClickHouse database.
