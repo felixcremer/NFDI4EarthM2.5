@@ -38,7 +38,7 @@ This deliverable provides a state of the art overview of solutions for local and
 This document shall not just give a raw description of available tools but should rather help categorizing tools and show how they relate to each other.
 It gives an overview of how these tools can be used from different programming languages for the analysis of gridded temperature data
 and an introduction for working with vector data cubes.
-It also entails benchmarks of the access times of different data cube access patterns from different programming languages. 
+It also contains benchmarks of the access times of different data cube access patterns from different programming languages. 
 
 
 # Introduction
@@ -64,24 +64,57 @@ The tools that are described in this document can be used for different tasks.
 These tasks range from extraction of a subset of data for a given spatial and temporal extent to the visualisation of the data, to the processing of the data in batches which also includes machine learning training. These different tasks have all different software needs.
 
 Another angle to look at is the size of the dataset. 
-The size of the data set can be described spatially, going from a local dataset like a single satellite acquisition to a regional dataset to a global harmonised dataset. 
+The size of the dataset can be described spatially, going from a local dataset like a single satellite acquisition to a regional dataset to a global harmonised dataset. 
 The size can also be in terms of the occupied data storage from a few megabytes to multiple petabytes.
 
 A classification of the type of the tool and the cloud readiness, describing, how well one can work on larger scale computations with this tool is shown in Figure 1. 
 We acknowledge that "Cloud readiness" is not a well-defined term and Cloud readiness can have different meanings for tools belonging to different categories. 
-For data formats a higher cloud readiness indicates, that cloud datasets data can be accessed partially, i.e. a dataset which is provided in an object store in the cloud does not need to be downloaded in full to access only a small subset of the data.
+For data formats a higher cloud readiness indicates, that cloud datasets can be accessed partially, i.e. a dataset which is provided in an object store in the cloud does not need to be downloaded in full to access only a small subset of the data.
 For software the cloud readiness entails, that the software can semi automatically use the different computing resources in a scalable way, 
 which are provided in the cloud as a multi-computer cluster. 
 
 ![*Overview of tools, their type and cloud-readiness* Be aware that there are some grey zones in this classification and many of the formats/tools at the lower end might be used in a cloud-context as well. However, we want to show the distinction between still widely used legacy tools that started before the advent of cloud computing and newer tools that were designed specifically with cloud computing in mind.](overview.png)
 
-### A few notes of AI-readiness of geospatial data
+# Governance, Funding and Sustainability of Geospatial Open Source Projects
 
-Since the start of this overview of emerging technologies for large-scale geospatial analysis, the largest trend in data analysis has been the rise of Artificial Intelligence (AI) and Machine Learning (ML). AI is now present in many areas of scientific data analysis, including geospatial data. In this context, the term "AI-readiness" was introduced to describe the suitability of geospatial data and tools for AI applications. 
+Open Source software is dependent on a developer community which has the time and capability to make relevant changes to the software. 
+In this section we look at the governance, funding and developer community size of different geospatial open source communities. 
 
-Since AI is an overarching term that includes many different techniques and methods, it is difficult to give a precise definition of AI-readiness. Depending on the specific method and use case, data access patterns and computational requirements can vary significantly. In terms of data management, the requirements and tradeoffs for AI applications are similar to those for traditional data analysis. For example, when working with large time series data to train LSTM-like models, efficient access to temporal data is crucial. On the other hand, when training convolutional neural networks (CNNs) on image data, efficient spatial access patterns are more important. This is a similar situation as with traditional geospatial analysis, where different algorithms may require different data access patterns.
+## Governance of Geospatial open source communities
 
-In the end the data scientist needs to understand the requirements of the AI method they want to use and choose the right data format and tool accordingly. For this reason, we believe that the overview provided in this document is also useful for AI applications, as it helps to understand the capabilities and limitations of different data formats and tools for geospatial analysis.
+Governance varies between geospatial software communities and depends on the size of the developer and user communities; larger communities tend to adopt a more organized approach. 
+Some repositories specify no governance guidelines, whereas projects driven mainly by a single developer state that this developer, or a small group of repository owners, makes the final decision. 
+Larger projects or overall ecosystems have selected a steering committee or project committee for final decisions. Examples of this kind of governance are QGIS, Open Data Cube, and the JuliaGeo ecosystem.
+These steering committees have 7 to 12 members.
+
+## Funding of Geospatial Open Source Projects
+
+The funding of geospatial open source software comes from very different sources. 
+Most projects do not state their funding source, which may indicate that developers contribute in their free time, or on work time because they need the project for their day-to-day work.
+Some projects state that they are mainly developed by people in specific institutes or firms.
+Some software development is funded through scientific projects, where the software is produced either as a specific deliverable or as a tool needed for the scientific outcome. 
+Larger projects like GeoServer, GDAL and QGIS have funding via commercial sponsors or in the case of QGIS via membership fees. 
+
+
+
+## Index of software contributions
+
+We developed the Open Source Contributor Index to indicate the contributor base of an open source software project. The index is the largest number n such that at least n contributors each have n or more commits to a given repository. 
+This is a coarse indicator of the contributor size and can determine whether the project is a single developer endeavour, a dedicated small group or a very large contributor base. 
+The index should not be compared between repositories too strictly, because the index also depends on the overall number of commits to the repository.
+An index of 1 shows that a single contributor has driven the project alone. A value below 10 indicates that development is spread across a dedicated group of people, while an index above 10 reflects a significant number of contributors.
+This index correlates strongly with the number of GitHub stars which we used as a proxy for popularity.
+A small contributor index with a high number of stars shows a high risk of a popular project which is dependent on a very small number of contributors.
+ 
+![*Open Source contributions index* The figure shows the open source contribution index on the y-axis and the number of GitHub stars on the x-axis. ](h_index_vs_stars.png)
+
+### A few notes on the AI-readiness of geospatial data
+
+Since the start of this overview of emerging technologies for large-scale geospatial analysis, the dominant trend in data analysis has been the rise of Artificial Intelligence (AI) and Machine Learning (ML). AI is now present in many areas of scientific data analysis, including geospatial data. In this context, the term "AI-readiness" was introduced to describe the suitability of geospatial data and tools for AI applications. 
+
+Since AI is an overarching term that includes many different techniques and methods, it is difficult to give a precise definition of AI-readiness. Depending on the specific method and use case, data access patterns and computational requirements can vary significantly. In terms of data management, the requirements and tradeoffs for AI applications are similar to those for traditional data analysis. For example, when working with large time series data to train LSTM-like models, efficient access to temporal data is crucial. On the other hand, when training convolutional neural networks (CNNs) on image data, efficient spatial access patterns are more important. This is a situation similar to that of traditional geospatial analysis, where different algorithms may require different data access patterns.
+
+Ultimately, the data scientist needs to understand the requirements of the AI method they want to use and choose the right data format and tool accordingly. For this reason, we believe that the overview provided in this document is also useful for AI applications, as it helps to understand the capabilities and limitations of different data formats and tools for geospatial analysis.
 
 # Data formats and databases
 
@@ -98,9 +131,9 @@ For web maps and large datasets, well-built overviews plus a suitable tile cache
 
 ## CF Conventions
 
-The CF  (Climate and Forecast) Metadata conventions are a set of rules to describe which metadata are necessary to describe a data set. 
+The CF  (Climate and Forecast) Metadata conventions are a set of rules to describe which metadata are necessary to describe a dataset. 
 The CF conventions have been developed on top of the NetCDF format. 
-The aim of the CF conventions is to set the metadata to provide a definitive descrpition of various datasets, including, what the variable represents, the spatial and temporal extent. 
+The aim of the CF conventions is to set the metadata to provide a definitive description of various datasets, including, what the variable represents, the spatial and temporal extent. 
 The CF conventions include self-describing data, so that no external table for the data description is needed.
 CF conventions constrain the [Common Data Language (CDL)](https://www.unidata.ucar.edu/software/netcdf/workshops/most-recent/nc3model/Cdl.html), and CF conventions and CDL are also the basis for [Zarr files](#zarr).
 
@@ -125,7 +158,7 @@ of their support for MPI (Message Passing Interface) based distributed read and 
 
 NetCDF stands for Network Common Data Form and is one of the standard data formats in the geosciences. It is a binary format. The development for NetCDF started in 1988 by the University Corporation for Atmospheric Research (UCAR). A NetCDF file is self describing, which means, that it includes a header that describes the data that is included in the netcdf file. 
 The most common used NetCDF version is NetCDF-4 which is based on the [HDF 5](#hdf5) format. 
-It allows for efficient subsetting but it can not be accessed multi threaded, but supports multi-process read/write operations through mpi.
+It allows for efficient subsetting but it cannot be accessed multi-threaded, but supports multi-process read/write operations through MPI.
 
 
 ## TileDB 
@@ -136,8 +169,8 @@ TileDB is an open source universal storage engine for dense and sparse multidime
 
 Zarr is a data format for handling of large N-dimensional typed arrays. It focuses on support for distributed storage systems (i.e. object stores). 
 It aims to provide efficient I/O for parallel computing.
-It can handle different chunks and there are mutliple extensions of the data format for different use cases. It can handle compression. 
-It is suitable for data sets that are larger than RAM. The computations on these datasets should be parallizable.
+It can handle different chunks and there are multiple extensions of the data format for different use cases. It can handle compression. 
+It is suitable for datasets that are larger than RAM. The computations on these datasets should be parallizable.
 The conceptual data structure uses CDL and [CF conventions](#cf-conventions), which it shares with [NetCDF](#netcdf).
 
 Examples:
@@ -215,7 +248,7 @@ It is mainly used for the analysis of Earth observation data in the framework of
 
 ## stars (R package)
 
-R package [`stars`](https://r-spatial.github.io/stars/) is a package for handling and analysing raster and vector data cubes, with arbitrary amount of dimensions. It uses the GDAL C++ Multidimensional Array interface (through R package [`sf`](ttps://r-spatial.github.io/sf/)) to read and write raster or vector data cubes, or sections of them (slices, limiting dimension ranges, or strided reads: reading dimensions at lower resolution)
+The R package [`stars`](https://r-spatial.github.io/stars/) is for handling and analysing raster and vector data cubes, with an arbitrary number of dimensions. It uses the GDAL C++ Multidimensional Array interface (through the R package [`sf`](https://r-spatial.github.io/sf/)) to read and write raster or vector data cubes, or sections of them (slices, limiting dimension ranges, or strided reads: reading dimensions at lower resolution)
 
 ## terra (R package)
 
@@ -231,22 +264,22 @@ R package [`rstac`](https://cran.r-project.org/web/packages/rstac/index.html) pr
 
 # Cloud solutions
 
-In this section we describe Cloud computing environments and tools for cloud computing environments which are used to scale the analysis which might be prepared and tested on a smaller setup on a local computer to a larger computational platform to enable the analysis of very large data sets which can not be downloaded locally. 
+In this section we describe Cloud computing environments and tools for cloud computing environments which are used to scale the analysis which might be prepared and tested on a smaller setup on a local computer to a larger computational platform to enable the analysis of very large datasets which can not be downloaded locally. 
 
 ## Google Earth Engine
 
 Google Earth Engine (GEE) is a cloud platform for the analysis of large geospatial datasets. 
 It provides easy access to the Landsat data, the Sentinel data and other different datasets. 
-It is currently free, because Google sees it more as a marketing tool. The algorithms that you want to compute on google earth engine have to be written in a strange sub language of java script and you cannot bring your own already working script. 
+It is currently free, because Google sees it more as a marketing tool. The algorithms that you want to compute on Google Earth Engine have to be written in a strange sublanguage of JavaScript and you cannot bring your own already working script. 
 We see a large problem with vendor lock in, because as soon as Google decides that the computation is not free anymore, you can't easily switch to other systems.
-The data that might be available on other cloud providers, but the algorithms have to be recoded, because GEE uses a special subset of pyhton or java script.
+The data might be available on other cloud providers, but the algorithms have to be recoded, because GEE uses a special subset of Python or JavaScript.
 The Google Earth Engine is used for example to provide the global forest cover change map.
 
 ## CDSE
 
 The CDSE is the Copernicus Data Space Ecosystem and provides free and instant access to data and services from Copernicus Sentinel missions which can be used for observation and analysis. The CDSE replaces the former Data and Information Access Services (DIAS) in providing a wide range of data and information on Earth's land, oceans and atmosphere. 
 
-Besides access to the data, the CDSE also includes data processing tools and different data access possibilities, for example via the Copernicus Browser or by creating and account for a better comprehensive exploration experience. The portal also contains dashboard functionalities, use cases and tutorials, and has the option to use cloud-based tools such as JupyterLab and openEO to analyse data without previous download. 
+Besides access to the data, the CDSE also includes data processing tools and different data access possibilities, for example via the Copernicus Browser or by creating an account for a better comprehensive exploration experience. The portal also contains dashboard functionalities, use cases and tutorials, and has the option to use cloud-based tools such as JupyterLab and openEO to analyse data without previous download. 
 
 ## EOSC
 
@@ -282,7 +315,7 @@ Users can create a 30-day trial account to explore or process available data col
 
 Pangeo is a community of like-minded people which collaboratively develop software and infrastructure for Big Data geoscience research. 
 The Pangeo community also promotes a software stack of interconnected python packages including [xarray](#xarray-python-package) and [Iris](#iris-python-package). 
-They also deploy this software stack as a Pangeo environment in different cloud computing facalities.  
+They also deploy this software stack as a Pangeo environment in different cloud computing facilities.  
 
 
 ## LexCube
@@ -290,7 +323,7 @@ They also deploy this software stack as a Pangeo environment in different cloud 
 LexCube is a software for interactively visualizing three-dimensional
 data cubes, available as a website and a Python package.
 The tool allows to interactively visualize and explore
-large scale Earth system science data sets as 3D data cubes.
+large scale Earth system science datasets as 3D data cubes.
 For the visualization the data is saved as tiles at various
 levels-of-detail,
 which can be pre-generated so that users will experience minimal latency
@@ -300,7 +333,7 @@ Pilot](https://zenodo.org/records/7822389)
 
 ## PyramidScheme.jl
 
-[PyramidScheme.jl](https://github.com/JuliaDataCubes/PyramidScheme.jl) is a Julia package to prepare, visualise and analyse large raster data sets. 
+[PyramidScheme.jl](https://github.com/JuliaDataCubes/PyramidScheme.jl) is a Julia package to prepare, visualise and analyse large raster datasets. 
 It allows to compute spatial overviews for given zarr raster datasets.
 These overviews can then be used to interactively visualize the datasets with very low latency.
 Given multiple datasets with a pyramid structure the data analysis can be done on the pyramids lazily so that only the data is loaded and computed that is currently needed for the visualisation. 
@@ -348,7 +381,7 @@ Discrete Global Grid Systems (DGGS) tessellate the surface of the earth with hie
 Contrary to other global grids like the UTM grid, e.g., used in Sentinel-2 products, each location is assigned to exactly one cell identifier at each given spatial refinement level.
 This eliminates tile overlaps and saves up to 33% of memory that needs to be stored, downloaded, and processed [(Bauer-Marschallinger and Falkner, 2023)](https://doi.org/10.1016/j.isprsjprs.2023.07.015).
 DGGS has been used in ESA's Soil Moisture and Ocean Salinity mission, multi-scale flood mapping, and the integration of raster and vector data, among others.
-Previous efforts focused on building grids and tools to convert between DGGS cell identifiers and geographical coordinates, leading into tools like Google S2, Uber H3, and HEALPix from NASA.
+Previous efforts focused on building grids and tools to convert between DGGS cell identifiers and geographical coordinates, leading to tools like Google S2, Uber H3, and HEALPix from NASA.
 Projects like [DGGAL](https://dggal.org/) and [GeoPlegma](https://github.com/GeoPlegma/GeoPlegma) provide libraries to use different DGGS in a uniform way.
 DGGS is not only about a different geocoding scheme but also about data structures and their indices to store and retrieve areas of interest efficiently.
 For example, [Vila et al. 2025](https://lps25.esa.int/lps25-presentations/presentations/1169/_1169.pdf) converted 1 year of Belgium's Sentinel-2 data into the columnar ClickHouse database.
