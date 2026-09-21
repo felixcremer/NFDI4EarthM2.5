@@ -299,7 +299,7 @@ Open Data Cube is deployed for several larger (national/continental)
 Earth observation data cubes, notably the [Australian Geoscience
 Data Cube](https://www.dea.ga.gov.au/about/open-data-cube),
 the [African Regional Data
-Cube](https://www.digitalearthafrica.org/african-regional-data-cube)
+Cube](https://web.archive.org/web/20201203134201/https://www.digitalearthafrica.org/news/thank-you-africa-regional-data-cube)
 and the [Swiss Data Cube](https://www.swissdatacube.org/). 
 
 It is also used as back-end infrastructure for openEO instances,
