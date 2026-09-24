@@ -20,7 +20,7 @@ software = [
     ("stars", 2, 1.4),
     ("terra", 2, 1.3),
     ("GEE", 3, 2.8),
-    ("DIAS", 3.15, 3.05),
+    ("CDSE", 3.15, 3.05),
     ("EOSC", 2.8, 3.15),
     ("STAC", 1, 2.8),
     ]
@@ -37,17 +37,17 @@ push!.(Ref(df), software);
 
 
 f = Figure()
-
+fsize=20
 ax1 = Axis(f[1,1], ylabel="Cloud Readiness", backgroundcolor = :gainsboro)
-ax1.ylabelsize=30
-ax1.xticklabelsize=30
-text!(ax1, df.type, df.scalability, text=df.Name, align=(:center, :bottom), textsize=30)
+ax1.ylabelsize=fsize
+ax1.xticklabelsize=fsize
+text!(ax1, df.type, df.scalability, text=df.Name, align=(:center, :bottom), fontsize=fsize)
 ax1.xticks = ([1,2,3], ["Data Formats", "Analysis Software", "Cloud Services"])
 hideydecorations!(ax1, label=false, grid=false)
 xlims!(ax1, 0.5, 3.5)
 ylims!(ax1, high=3.5)
 f
-save("D2.5_1-5_Overview_DC_tech/overview.svg", f)
+save("D2.5_1-5_Overview_DC_tech/overview.png", f)
 
 
 #=
