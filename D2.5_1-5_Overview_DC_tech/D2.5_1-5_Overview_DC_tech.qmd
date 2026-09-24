@@ -43,9 +43,7 @@ It also contains benchmarks of the access times of different data cube access pa
 
 # Introduction
 
-The purpose of this document is to provide the state of the art solutions for local and cloud based data storage and analysis for large gridded data.
-In this document we are going to describe software that is currently used by scientists for the analysis of geospatial raster data. 
-This is going to be a living document that is updated at least on an annual basis and other emerging technologies are going to be added in the future.
+The purpose of this document is to provide the state of the art open source solutions for local and cloud based data storage and analysis of geospatial data.
 When looking at the diversity of available tools, data formats and services, an end user might quickly be overwhelmed and confused. 
 This document shall not just give a raw description of available tools but should rather help categorizing tools and show how they relate to each other and 
 we will try to use a variety of "angles" to look at the tools:
@@ -386,15 +384,6 @@ Projects like [DGGAL](https://dggal.org/) and [GeoPlegma](https://github.com/Geo
 DGGS is not only about a different geocoding scheme but also about data structures and their indices to store and retrieve areas of interest efficiently.
 For example, [Vila et al. 2025](https://lps25.esa.int/lps25-presentations/presentations/1169/_1169.pdf) converted 1 year of Belgium's Sentinel-2 data into the columnar ClickHouse database.
 [DGGS.jl](https://github.com/danlooo/DGGS.jl) uses Zarr and a multidimensional spatial index for more efficient handling of bounding boxes in dense raster data.
-
-# Summary
-
-The authors admit that the list of tools presented here is far from complete. 
-The list will be extended in the future and more data formats, tools and processing services will be added.
-NFDI4Earth is an open community. 
-In case you want to suggest additional tools to be added in the future,
-feel free to reach out to the NFDI4Earth Measure 2.5 team (fcremer@bgc-jena.mpg.de as representative)
-or start a discussion directly on [Github](https://github.com/felixcremer/NFDI4EarthM2.5/issues). 
 
 # Benchmarks of Zarr data input in different programming languages
 
